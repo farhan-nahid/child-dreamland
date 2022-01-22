@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Dongle:wght@300;400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  &::after,
+  &::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+a,
+span,
+input,
+textarea,
+button {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+table,
+section,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+li,
+a,
+span,
+input,
+textarea,
+button {
+  font-family: 'Dongle', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-family: 'Concert One', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}

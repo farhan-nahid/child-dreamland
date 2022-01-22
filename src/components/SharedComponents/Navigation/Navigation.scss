@@ -1,0 +1,39 @@
+#navigation {
+  .navbar-brand {
+    font-size: 30px;
+    font-family: 'Concert One', cursive;
+  }
+
+  #basic-navbar-nav {
+    .navbar-nav {
+      .nav-link {
+        margin-left: 30px;
+        padding: 0;
+        font-size: 25px;
+        &:nth-child(1) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #navigation {
+    .navbar-toggler {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    #basic-navbar-nav {
+      .navbar-nav {
+        text-align: center;
+        .nav-link {
+          margin-bottom: 10px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
