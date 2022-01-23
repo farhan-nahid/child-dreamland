@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AiOutlineStar } from 'react-icons/ai';
-import { BiRocket } from 'react-icons/bi';
+import { BiPaperPlane, BiRocket } from 'react-icons/bi';
 import { BsTrophy } from 'react-icons/bs';
 import { GrLineChart } from 'react-icons/gr';
 import Slider from 'react-slick';
@@ -34,7 +34,9 @@ export default class HeroSlider extends Component {
             <p>
               We here at <strong>PATHSHALA</strong> provides best education to your little one
             </p>
-            <button>Know More</button>
+            <button>
+              <BiPaperPlane /> Know More
+            </button>
           </div>
           <div className='hero__slide two'>
             <h2>
@@ -46,7 +48,9 @@ export default class HeroSlider extends Component {
             <p>
               We here at <strong>PATHSHALA</strong> provides best education to your little one
             </p>
-            <button>Know More</button>
+            <button>
+              <BiPaperPlane /> Know More
+            </button>
           </div>
           <div className='hero__slide three'>
             <h2>
@@ -58,7 +62,9 @@ export default class HeroSlider extends Component {
             <p>
               We here at <strong>PATHSHALA</strong> provides best education to your little one
             </p>
-            <button>Know More</button>
+            <button>
+              <BiPaperPlane /> Know More
+            </button>
           </div>
         </Slider>
       </section>
