@@ -91,7 +91,7 @@ button {
   border-radius: 8px;
   font-size: 25px;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   transition: all linear 0.3s;
   &:focus {
     outline: 0;
@@ -99,6 +99,7 @@ button {
   &:hover {
     border: 2px solid #1e88e5;
     background-color: transparent;
+    color: #1e88e5;
   }
 }
 

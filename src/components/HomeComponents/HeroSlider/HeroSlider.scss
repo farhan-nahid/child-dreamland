@@ -10,7 +10,7 @@
             width: 30px;
             height: 30px;
             opacity: 0.25;
-            color: #fff;
+            color: #ffffff;
           }
         }
       }
@@ -18,21 +18,29 @@
 
     .slick-dots li.slick-active button:before {
       opacity: 1;
-      color: #fff;
+      color: #ffffff;
     }
 
     .slick-next,
     .slick-prev {
       position: absolute;
       top: 50%;
-      background-color: #1e88e5;
+      border: 2px solid #ffffff;
       height: 40px;
       width: 40px;
-      border-radius: 50%;
+      border-radius: 6px;
       z-index: 9;
+      transition: all linear 0.3s;
       &::before {
-        color: #063157;
+        transition: all linear 0.3s;
+        color: #ffffff;
         opacity: 0.9;
+      }
+      &:hover {
+        border: 2px solid #1e88e5;
+        &::before {
+          color: #1e88e5;
+        }
       }
     }
 
@@ -55,7 +63,7 @@
         align-items: center;
         overflow: hidden;
         h2 {
-          color: #fff;
+          color: #ffffff;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -66,7 +74,7 @@
         }
         h1 {
           margin: 20px 0;
-          color: #fff;
+          color: #ffffff;
           font-size: 50px;
           strong {
             font-size: 60px;
@@ -74,7 +82,7 @@
           }
         }
         p {
-          color: #fff;
+          color: #ffffff;
           line-height: 32px;
           font-size: 26px;
           width: 370px;
@@ -86,6 +94,9 @@
         }
         button {
           margin-top: 20px;
+          &:hover {
+            color: #ffffff;
+          }
         }
       }
       .one {
