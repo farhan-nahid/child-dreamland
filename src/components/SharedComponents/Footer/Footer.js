@@ -1,11 +1,15 @@
 import React from 'react';
 import { FiFacebook, FiGithub, FiInstagram, FiTwitter } from 'react-icons/fi';
+import { GiGraduateCap } from 'react-icons/gi';
 import './Footer.scss';
 
 const Footer = () => {
   return (
     <footer>
       <div className='container'>
+        <h4>
+          <GiGraduateCap />
+        </h4>
         <h5> PATHSHALA</h5>
         <h6>BETTER WAY TO LEARN & GROW</h6>
         <div className='footer__container'>

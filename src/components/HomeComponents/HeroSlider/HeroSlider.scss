@@ -37,9 +37,9 @@
         opacity: 0.9;
       }
       &:hover {
-        border: 2px solid #1e88e5;
+        border: 2px solid #00938d;
         &::before {
-          color: #1e88e5;
+          color: #00938d;
         }
       }
     }
@@ -78,11 +78,11 @@
           font-size: 50px;
           strong {
             font-size: 60px;
-            color: #1e88e5;
+            color: #00938d;
           }
         }
         p {
-          color: #ffffff;
+          color: #e9d2d2;
           line-height: 32px;
           font-size: 26px;
           width: 370px;
@@ -90,6 +90,7 @@
           text-align: center;
           strong {
             margin: 0 10px;
+            color: #ffffff;
           }
         }
         button {
