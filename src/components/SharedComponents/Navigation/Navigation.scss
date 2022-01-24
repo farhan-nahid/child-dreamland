@@ -18,8 +18,12 @@
         margin-left: 30px;
         padding: 0;
         font-size: 25px;
+        transition: all 0.3s linear;
         &:nth-child(1) {
           margin-left: 0;
+        }
+        &:hover {
+          color: #00938d;
         }
       }
     }

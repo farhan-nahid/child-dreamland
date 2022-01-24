@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import { AiOutlineStar } from 'react-icons/ai';
 import { BiPaperPlane } from 'react-icons/bi';
 import principalImg from '../../../images/principal.jpg';
@@ -7,7 +8,7 @@ import './OurPrincipal.scss';
 const OurPrincipal = () => {
   return (
     <section id='principal'>
-      <div className='container principal__container'>
+      <Container className='principal__container'>
         <div className='principal__image'>
           <img src={principalImg} alt='principalImg' />
         </div>
@@ -33,7 +34,7 @@ const OurPrincipal = () => {
             </span>
           </button>
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Login from './components/AuthComponents/Login/Login';
@@ -8,6 +9,7 @@ import Home from './pages/Home';
 function App() {
   return (
     <>
+      <Toaster />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />

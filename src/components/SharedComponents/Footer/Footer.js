@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import { FiFacebook, FiGithub, FiInstagram, FiTwitter } from 'react-icons/fi';
 import { GiGraduateCap } from 'react-icons/gi';
 import './Footer.scss';
@@ -6,7 +7,7 @@ import './Footer.scss';
 const Footer = () => {
   return (
     <footer>
-      <div className='container'>
+      <Container>
         <h4>
           <GiGraduateCap />
         </h4>
@@ -77,21 +78,31 @@ const Footer = () => {
           </div>
 
           <div className='footer__item'>
-            <h6>CONTACT US</h6>
+            <h6>Teachers</h6>
             <ul>
               <li>
                 <a href='/' target='_blank' rel='noopener noreferrer'>
-                  3768 Seabury Ct, Burlington, NC, 27215
+                  Olivia Thomas
                 </a>
               </li>
               <li>
                 <a href='/' target='_blank' rel='noopener noreferrer'>
-                  +1 8910000891
+                  Max Turner
                 </a>
               </li>
               <li>
                 <a href='/' target='_blank' rel='noopener noreferrer'>
-                  email@pathshala.com
+                  Jane Smith
+                </a>
+              </li>
+              <li>
+                <a href='/' target='_blank' rel='noopener noreferrer'>
+                  John Stevens
+                </a>
+              </li>
+              <li>
+                <a href='/' target='_blank' rel='noopener noreferrer'>
+                  Martha Stevens
                 </a>
               </li>
             </ul>
@@ -122,7 +133,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };
