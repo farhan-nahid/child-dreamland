@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  getIdToken,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
@@ -14,7 +15,7 @@ import initializeAuthentication from '../components/AuthComponents/Firebase/fire
 const useFirebase = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  //   const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   initializeAuthentication();
   const auth = getAuth();
@@ -92,6 +93,9 @@ const useFirebase = () => {
     const unSubscrived = onAuthStateChanged(auth, (user) => {
       if (user) {
         setLoggedInUser(user);
+        getIdToken(user).then((idToken) => {
+          localStorage.setItem('ePATHSHALA_token', idToken);
+        });
       }
       setIsLoading(false);
     });
@@ -100,18 +104,18 @@ const useFirebase = () => {
 
   // Check Admin or not
 
-  /*   useEffect(() => {
+  useEffect(() => {
     axios
-      .get(`https://kacha-bazar.herokuapp.com/user/${loggedInUser?.email}`)
+      .get(`https://e--pathshala.herokuapp.com/user/${loggedInUser?.email}`)
       .then((res) => setIsAdmin(res.data.admin))
       .catch((err) => toast.error(err.message))
       .finally(() => setIsLoading(false));
-  }, [loggedInUser?.email]); */
+  }, [loggedInUser?.email]);
 
   return {
     isLoading,
     loggedInUser,
-    // isAdmin,
+    isAdmin,
     emailSignup,
     emailSignIn,
     logOut,

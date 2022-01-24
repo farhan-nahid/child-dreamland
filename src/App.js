@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Login from './components/AuthComponents/Login/Login';
+import RequiredAdmin from './components/AuthComponents/RequiredAdmin/RequiredAdmin';
 import SignUp from './components/AuthComponents/SignUp/SignUp';
 import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
@@ -24,8 +25,22 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />}>
           <Route path='/dashboard' element={<Profile />} />
           <Route path='/dashboard/profile' element={<Profile />} />
-          <Route path='/dashboard/add-course' element={<AddCourse />} />
-          <Route path='/dashboard/add-admin' element={<AddAdmin />} />
+          <Route
+            path='/dashboard/add-course'
+            element={
+              <RequiredAdmin>
+                <AddCourse />
+              </RequiredAdmin>
+            }
+          />
+          <Route
+            path='/dashboard/add-admin'
+            element={
+              <RequiredAdmin>
+                <AddAdmin />
+              </RequiredAdmin>
+            }
+          />
         </Route>
       </Routes>
     </>
