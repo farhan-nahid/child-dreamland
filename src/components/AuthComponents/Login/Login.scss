@@ -1,5 +1,5 @@
 #login__page {
-  background: url('../../../images/login-bg.jpg') no-repeat center / cover;
+  background: url('../../../images/login-bg.jpg') no-repeat center / cover fixed;
   position: relative;
   &::after {
     background: rgba(0, 0, 0, 0.7);
@@ -26,10 +26,14 @@
         color: #00938d;
         text-transform: uppercase;
       }
-      button {
+      p {
+        text-align: center;
         margin-top: 20px;
-        width: 120px;
+        a {
+          color: #00938d;
+        }
       }
+
       .form-check-input:focus,
       .form-control:focus {
         box-shadow: none;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Footer from '../../SharedComponents/Footer/Footer';
 import Navigation from '../../SharedComponents/Navigation/Navigation';
 import './Login.scss';
@@ -22,7 +23,12 @@ const Login = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control type='Your password' placeholder='Password' />
             </Form.Group>
-            <button type='submit'>Submit</button>
+            <button type='submit' className='main__button'>
+              <span>Login</span>
+            </button>
+            <p>
+              Don’t have an account? <Link to='/register'>Register</Link>
+            </p>
           </Form>
         </Container>
       </section>

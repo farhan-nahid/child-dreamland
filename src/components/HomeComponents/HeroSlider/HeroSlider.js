@@ -34,8 +34,10 @@ export default class HeroSlider extends Component {
             <p>
               We here at <strong>PATHSHALA</strong> provides best education to your little one
             </p>
-            <button>
-              <BiPaperPlane /> Know More
+            <button className='main__button'>
+              <span>
+                <BiPaperPlane /> Know More
+              </span>
             </button>
           </div>
           <div className='hero__slide two'>
@@ -48,8 +50,10 @@ export default class HeroSlider extends Component {
             <p>
               We here at <strong>PATHSHALA</strong> provides best education to your little one
             </p>
-            <button>
-              <BiPaperPlane /> Know More
+            <button className='main__button'>
+              <span>
+                <BiPaperPlane /> Know More
+              </span>
             </button>
           </div>
           <div className='hero__slide three'>
@@ -62,8 +66,10 @@ export default class HeroSlider extends Component {
             <p>
               We here at <strong>PATHSHALA</strong> provides best education to your little one
             </p>
-            <button>
-              <BiPaperPlane /> Know More
+            <button className='main__button'>
+              <span>
+                <BiPaperPlane /> Know More
+              </span>
             </button>
           </div>
         </Slider>

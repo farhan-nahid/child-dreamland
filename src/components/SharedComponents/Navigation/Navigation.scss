@@ -29,6 +29,9 @@
 @media only screen and (max-width: 992px) {
   #navigation {
     .navbar-toggler {
+      width: 50px;
+      background-color: #ffffff;
+      border-color: transparent;
       &:focus {
         box-shadow: none;
       }
@@ -38,7 +41,7 @@
       .navbar-nav {
         padding: 15px 0;
         text-align: center;
-        background-color: #fff;
+        background-color: #ffffff;
         .nav-link {
           color: #000;
           margin-top: 10px;
@@ -48,6 +51,9 @@
           }
         }
       }
+    }
+    .navbar-toggler-icon {
+      background: url('../../../images/menu.svg') no-repeat center;
     }
   }
 }

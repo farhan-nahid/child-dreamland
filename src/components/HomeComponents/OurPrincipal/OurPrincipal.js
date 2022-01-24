@@ -27,8 +27,10 @@ const OurPrincipal = () => {
             looking at its layout.
           </p>
           <h6 className='sub__title'>Mr JOHN DOE, M.D, P.C</h6>
-          <button>
-            <BiPaperPlane /> Know More
+          <button className='main__button'>
+            <span>
+              <BiPaperPlane /> Know More
+            </span>
           </button>
         </div>
       </div>
