@@ -10,7 +10,7 @@ const Footer = () => {
         <h4>
           <GiGraduateCap />
         </h4>
-        <h5> PATHSHALA</h5>
+        <h5>ePATHSHALA</h5>
         <h6>BETTER WAY TO LEARN & GROW</h6>
         <div className='footer__container'>
           <div className='footer__item'>
