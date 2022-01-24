@@ -1,0 +1,26 @@
+#add__admin {
+  .add__admin__container {
+    margin: 100px auto;
+    width: 90%;
+    padding: 50px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    position: relative;
+    .form-control {
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    .form-check-input,
+    .form-control,
+    .form-select {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .form-control::placeholder {
+      font-size: 15px;
+      font-weight: 300;
+    }
+  }
+}

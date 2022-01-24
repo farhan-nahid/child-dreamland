@@ -33,14 +33,11 @@ const Navigation = () => {
                 login
               </Nav.Link>
             ) : (
-              <>
-                <Nav.Link>{loggedInUser.displayName}</Nav.Link>
-                <Nav.Link>
-                  <Button variant='danger' size='sm' onClick={logOut}>
-                    Logout
-                  </Button>
-                </Nav.Link>
-              </>
+              <Nav.Link>
+                <Button variant='danger' onClick={logOut}>
+                  Logout
+                </Button>
+              </Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>
