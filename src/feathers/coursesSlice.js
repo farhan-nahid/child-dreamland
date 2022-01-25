@@ -4,16 +4,15 @@ import toast from 'react-hot-toast';
 
 const initialState = {
   coursesState: [],
-  status: 'idle',
 };
 
 export const postCoursesAsync = createAsyncThunk('courses/postCoursesAsync', async (payload) => {
-  const response = await axios.post(`http://localhost:5000/add-course`, payload);
+  const response = await axios.post(`https://e--pathshala.herokuapp.com/add-course`, payload);
   return response.data;
 });
 
 export const loadCoursesAsync = createAsyncThunk('courses/loadCoursesAsync', async () => {
-  const response = await axios.get('http://localhost:5000/all-course');
+  const response = await axios.get('https://e--pathshala.herokuapp.com/all-courses');
   return response.data;
 });
 
@@ -34,11 +33,12 @@ export const coursesSlice = createSlice({
       toast.error(message);
     });
     builder.addCase(loadCoursesAsync.pending, (state, action) => {
-      toast.loading('Processing... Please Wait!!');
+      toast.loading('Courses are loading... Please Wait!!');
     });
     builder.addCase(loadCoursesAsync.fulfilled, (state, { payload }) => {
-      state.coursesState = payload;
       toast.dismiss();
+      state.coursesState = payload;
+      toast.success('All Courses are loaded Successfully !!!');
     });
     builder.addCase(loadCoursesAsync.rejected, (state, { error: { message } }) => {
       toast.dismiss();
