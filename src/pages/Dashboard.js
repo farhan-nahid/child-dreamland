@@ -13,7 +13,9 @@ const Dashboard = () => {
         <Row className='dashboard__container g-5'>
           <Col lg={3} md={12} sm={12} xs={12}>
             <aside>
-              <h4>ePATHSHALA</h4>
+              <NavLink className='dashboard__logo' to='/'>
+                ePATHSHALA
+              </NavLink>
               <ul>
                 <li>
                   <NavLink to='/dashboard/profile' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>

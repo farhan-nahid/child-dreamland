@@ -25,8 +25,8 @@ const Navigation = () => {
             <Nav.Link as={NavLink} to='/'>
               Events
             </Nav.Link>
-            <Nav.Link as={NavLink} to='/'>
-              Contact
+            <Nav.Link as={NavLink} to='/dashboard/profile'>
+              Dashboard
             </Nav.Link>
             {!loggedInUser ? (
               <Nav.Link as={NavLink} to='/login'>

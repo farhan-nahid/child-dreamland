@@ -8,12 +8,12 @@ const initialState = {
 };
 
 export const postCoursesAsync = createAsyncThunk('courses/postCoursesAsync', async (payload) => {
-  const response = await axios.post(`https://kacha-bazar.herokuapp.com/add-product`, payload);
+  const response = await axios.post(`http://localhost:5000/add-course`, payload);
   return response.data;
 });
 
 export const loadCoursesAsync = createAsyncThunk('courses/loadCoursesAsync', async () => {
-  const response = await axios.get('https://kacha-bazar.herokuapp.com/all-products');
+  const response = await axios.get('http://localhost:5000/all-course');
   return response.data;
 });
 

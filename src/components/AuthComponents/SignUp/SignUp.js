@@ -52,8 +52,12 @@ const SignUp = () => {
     } else if (data.phNumber.length <= 10) {
       return toast.error('Your Phone Number must have 11 digit..');
     } else {
-      data.fullName = `${data.fName} ${data.lName}`;
+      data.fullName = `${data.fName.trim()} ${data.lName.trim()}`;
       data.userImage = image;
+      data.approvedTeacher = false;
+      delete data.fName;
+      delete data.lName;
+      delete data.pass2;
       emailSignup(data, navigate);
     }
   };
@@ -150,22 +154,9 @@ const SignUp = () => {
                 </Form.Group>
               </Col>
               <Col lg={6} md={6} sm={12} xs={12}>
-                <Form.Group controlId='image' className='mb-3'>
+                <Form.Group controlId='image' className='mb-5'>
                   <Form.Label>Your Image</Form.Label>
                   <Form.Control type='file' onChange={handleImageUpload} />
-                </Form.Group>
-              </Col>
-              <Col lg={12} md={12} sm={12} xs={12} className='mb-3'>
-                <Form.Group className='mb-3' controlId='about'>
-                  <Form.Label>Something About Yourself</Form.Label>
-                  <Form.Control
-                    as='textarea'
-                    rows={5}
-                    spellCheck='false'
-                    required
-                    onBlur={handelBlur}
-                    placeholder='Describe some word about Yourself (1-150)'
-                  />
                 </Form.Group>
               </Col>
               <Col lg={12} md={12} sm={12} xs={12} className='text-center'>

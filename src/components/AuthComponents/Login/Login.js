@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Footer from '../../SharedComponents/Footer/Footer';
 import Navigation from '../../SharedComponents/Navigation/Navigation';
@@ -47,8 +47,8 @@ const Login = () => {
             <Form.Group className='mb-5' controlId='loginPass'>
               <Form.Label>Password</Form.Label>
               <Form.Control
-                type='Your password'
-                placeholder='Password'
+                type='password'
+                placeholder='Your Password'
                 name='password'
                 onBlur={handelBlur}
                 autoComplete='off'

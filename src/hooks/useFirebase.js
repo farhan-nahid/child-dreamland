@@ -4,6 +4,7 @@ import {
   getAuth,
   getIdToken,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -30,6 +31,7 @@ const useFirebase = () => {
           photoURL: user.userImage,
           displayName: user.fullName,
         });
+        sendEmailVerification(auth.currentUser);
         saveUserForEmail(user);
         toast.dismiss(loading);
         toast.success('Creating a new user successfully...');

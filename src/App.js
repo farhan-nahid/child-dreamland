@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Login from './components/AuthComponents/Login/Login';
 import RequiredAdmin from './components/AuthComponents/RequiredAdmin/RequiredAdmin';
+import RequiredAuth from './components/AuthComponents/RequiredAuth/RequiredAuth';
 import SignUp from './components/AuthComponents/SignUp/SignUp';
 import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
@@ -12,7 +13,7 @@ import ScrollToTop from './components/SharedComponents/ScrollToTop/ScrollToTop';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 
-function App() {
+const App = () => {
   return (
     <>
       <Toaster />
@@ -22,9 +23,30 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<SignUp />} />
-        <Route path='/dashboard' element={<Dashboard />}>
-          <Route path='/dashboard' element={<Profile />} />
-          <Route path='/dashboard/profile' element={<Profile />} />
+        <Route
+          path='/dashboard'
+          element={
+            <RequiredAuth>
+              <Dashboard />
+            </RequiredAuth>
+          }
+        >
+          <Route
+            path='/dashboard'
+            element={
+              <RequiredAuth>
+                <Profile />
+              </RequiredAuth>
+            }
+          />
+          <Route
+            path='/dashboard/profile'
+            element={
+              <RequiredAuth>
+                <Profile />
+              </RequiredAuth>
+            }
+          />
           <Route
             path='/dashboard/add-course'
             element={
@@ -45,6 +67,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;

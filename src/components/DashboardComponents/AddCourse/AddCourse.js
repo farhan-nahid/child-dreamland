@@ -2,16 +2,40 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
+import { postCoursesAsync } from '../../../feathers/coursesSlice';
 import './AddCourse.scss';
 
 const AddCourse = () => {
   const [data, setData] = useState({});
   const [image, setImage] = useState();
+  const dispatch = useDispatch();
 
   const handelBlur = (e) => {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
+  };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    data.image = image;
+    if (!image) {
+      toast.error('Please Upload a Image');
+    } else {
+      dispatch(postCoursesAsync(data)).then((res) => {
+        if (res.payload.insertedId) {
+          swal({
+            title: 'Good job!',
+            text: `${data.name} is successfully Added!`,
+            icon: 'success',
+            button: 'OK!',
+          });
+          e.target.reset();
+        }
+      });
+    }
   };
 
   const handleImageUpload = (e) => {
@@ -34,7 +58,7 @@ const AddCourse = () => {
   return (
     <section id='add__course'>
       <h2>Add Course</h2>
-      <Form className='add__course__container'>
+      <Form className='add__course__container' onSubmit={handelSubmit}>
         <Row>
           <Col lg={6} md={6} sm={12} xs={12}>
             <Form.Group className='mb-3' controlId='courseName'>
@@ -44,7 +68,7 @@ const AddCourse = () => {
                 placeholder='Enter Course Name'
                 autoComplete='off'
                 spellCheck='false'
-                name='fName'
+                name='name'
                 required
                 onBlur={handelBlur}
               />
@@ -59,7 +83,7 @@ const AddCourse = () => {
                 placeholder='Enter Mentor Name'
                 autoComplete='off'
                 spellCheck='false'
-                name='fName'
+                name='mentor'
                 required
                 onBlur={handelBlur}
               />
@@ -74,7 +98,7 @@ const AddCourse = () => {
                 placeholder='Enter Course Price'
                 autoComplete='off'
                 spellCheck='false'
-                name='fName'
+                name='price'
                 required
                 onBlur={handelBlur}
               />

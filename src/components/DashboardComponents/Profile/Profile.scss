@@ -7,6 +7,24 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     position: relative;
+    .verified,
+    .unVerified {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 5px 20px;
+      font-size: 15px;
+    }
+
+    .verified {
+      color: #217008;
+      background-color: #0080008c;
+    }
+
+    .unVerified {
+      background: #ff000073;
+      color: #800000e3;
+    }
     img {
       position: absolute;
       left: 50%;
