@@ -7,9 +7,8 @@
       cursor: pointer;
       border-radius: 7px;
       overflow: hidden;
-      background-color: #04d2c8;
       margin: 0 10px;
-      color: #fff;
+      color: #ffffff;
       text-align: center;
       img {
         height: 250px;
@@ -22,15 +21,16 @@
         left: 0.625rem;
         top: 0.625rem;
         line-height: 1.45;
-        color: #fff;
+        color: #ffffff;
         background-color: #ff9900;
         border-radius: 0.3125rem;
       }
-      h4 {
-        margin: 20px 0 10px 0;
-      }
-      h5 {
-        margin: 0 0 40px 0;
+      .course__card__content {
+        background-color: #04d2c8;
+        padding: 15px 10px 30px 10px;
+        h4 {
+          margin-bottom: 10px;
+        }
       }
     }
   }
