@@ -1,12 +1,15 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { AiOutlinePlus, AiOutlineUserAdd } from 'react-icons/ai';
-import { GoListUnordered } from 'react-icons/go';
+import { BiHomeAlt, BiLogOut } from 'react-icons/bi';
 import { MdOutlineManageAccounts } from 'react-icons/md';
 import { NavLink, Outlet } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 import './Dashboard.scss';
 
 const Dashboard = () => {
+  const { isAdmin, logOut } = useAuth();
+
   return (
     <>
       <section id='dashboard'>
@@ -23,25 +26,40 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to='/dashboard/add-course' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                    <AiOutlinePlus /> Add Course
+                  <NavLink to='/dashboard/all-students' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                    <AiOutlineUserAdd /> All Students
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to='/dashboard/add-course' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                    <GoListUnordered /> Manage Orders
+                  <NavLink to='/'>
+                    <BiHomeAlt /> Go Home
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to='/dashboard/add-course' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                    <MdOutlineManageAccounts /> Manage Users
+                  <NavLink to='/' onClick={logOut}>
+                    <BiLogOut /> Log Out
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to='/dashboard/add-admin' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                    <AiOutlinePlus /> Add Admin
-                  </NavLink>
-                </li>
+
+                {isAdmin && (
+                  <>
+                    <li>
+                      <NavLink to='/dashboard/add-course' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                        <AiOutlinePlus /> Add Course
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to='/dashboard/add-course' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                        <MdOutlineManageAccounts /> Manage Users
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to='/dashboard/add-admin' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                        <AiOutlinePlus /> Add Admin
+                      </NavLink>
+                    </li>
+                  </>
+                )}
               </ul>
             </aside>
           </Col>

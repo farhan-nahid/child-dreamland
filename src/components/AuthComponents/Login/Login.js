@@ -9,7 +9,7 @@ import './Login.scss';
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { emailSignIn } = useAuth();
+  const { emailSignIn, disableLoading } = useAuth();
   const [data, setData] = useState({});
 
   const handelBlur = (e) => {
@@ -56,7 +56,7 @@ const Login = () => {
               />
             </Form.Group>
             <div className='text-center'>
-              <button type='submit' className='main__button'>
+              <button type='submit' className='main__button' disabled={disableLoading}>
                 <span>Login</span>
               </button>
             </div>

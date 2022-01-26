@@ -17,6 +17,7 @@ const useFirebase = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [disableLoading, setIsDisableLoading] = useState(false);
 
   initializeAuthentication();
   const auth = getAuth();
@@ -24,6 +25,7 @@ const useFirebase = () => {
   // email password signUp function
 
   const emailSignup = (user, navigate) => {
+    setIsDisableLoading(true);
     const loading = toast.loading('Creating User... Please wait!!!');
     createUserWithEmailAndPassword(auth, user.email, user.pass1)
       .then((userCredential) => {
@@ -37,10 +39,12 @@ const useFirebase = () => {
         toast.success('Creating a new user successfully...');
         setLoggedInUser(userCredential.user);
         navigate('/');
+        setIsDisableLoading(false);
       })
       .catch((error) => {
         toast.dismiss(loading);
         toast.error(error.message);
+        setIsDisableLoading(false);
       })
       .finally(() => setIsLoading(false));
   };
@@ -48,6 +52,7 @@ const useFirebase = () => {
   // email password signIn function
 
   const emailSignIn = (email, password, navigate, location) => {
+    setIsDisableLoading(true);
     const loading = toast.loading('Finding Account... Please wait!!!');
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -56,10 +61,12 @@ const useFirebase = () => {
         setLoggedInUser(userCredential.user);
         const redirect_URI = location.state?.from || '/';
         navigate(redirect_URI);
+        setIsDisableLoading(false);
       })
       .catch((error) => {
         toast.dismiss(loading);
         toast.error(error.message);
+        setIsDisableLoading(false);
       })
       .finally(() => setIsLoading(false));
   };
@@ -118,6 +125,7 @@ const useFirebase = () => {
     isLoading,
     loggedInUser,
     isAdmin,
+    disableLoading,
     emailSignup,
     emailSignIn,
     logOut,

@@ -10,9 +10,9 @@ import './signUp.scss';
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { emailSignup } = useAuth();
   const [data, setData] = useState({});
   const [image, setImage] = useState('');
+  const { emailSignup, disableLoading } = useAuth();
 
   const handelBlur = (e) => {
     const newData = { ...data };
@@ -160,7 +160,7 @@ const SignUp = () => {
                 </Form.Group>
               </Col>
               <Col lg={12} md={12} sm={12} xs={12} className='text-center'>
-                <button type='submit' className='main__button'>
+                <button type='submit' className='main__button' disabled={disableLoading}>
                   <span>Register</span>
                 </button>
               </Col>

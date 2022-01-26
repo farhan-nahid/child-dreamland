@@ -102,6 +102,10 @@ body {
   &:focus {
     outline: 0;
   }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #00938e59;
+  }
   span {
     position: relative;
     z-index: 99;

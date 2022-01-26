@@ -5,9 +5,11 @@ import './App.scss';
 import Login from './components/AuthComponents/Login/Login';
 import RequiredAdmin from './components/AuthComponents/RequiredAdmin/RequiredAdmin';
 import RequiredAuth from './components/AuthComponents/RequiredAuth/RequiredAuth';
+import RequiredTeacher from './components/AuthComponents/RequiredTeacher/RequiredTeacher';
 import SignUp from './components/AuthComponents/SignUp/SignUp';
 import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
+import AllStudents from './components/DashboardComponents/AllStudents/AllStudents';
 import Profile from './components/DashboardComponents/Profile/Profile';
 import ScrollToTop from './components/SharedComponents/ScrollToTop/ScrollToTop';
 import Dashboard from './pages/Dashboard';
@@ -45,6 +47,14 @@ const App = () => {
               <RequiredAuth>
                 <Profile />
               </RequiredAuth>
+            }
+          />
+          <Route
+            path='/dashboard/all-students'
+            element={
+              <RequiredTeacher>
+                <AllStudents />
+              </RequiredTeacher>
             }
           />
           <Route
