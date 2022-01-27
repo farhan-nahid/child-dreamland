@@ -18,7 +18,7 @@ export const postUsersAsync = createAsyncThunk('users/postUsersAsync', async (pa
 // });
 
 export const loadSingleUsersAsync = createAsyncThunk('users/loadSingleUsersAsync', async (payload) => {
-  const response = await axios.get(`http://localhost:5000/normal-users/${payload}`);
+  const response = await axios.get(`https://e--pathshala.herokuapp.com/normal-users/${payload}`);
   return response.data;
 });
 

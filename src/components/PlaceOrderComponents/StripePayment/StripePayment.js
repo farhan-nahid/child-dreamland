@@ -15,7 +15,7 @@ const StripePayment = ({ data }) => {
 
   useEffect(() => {
     axios
-      .post('http://localhost:5000/create-payment-intent', data)
+      .post('https://e--pathshala.herokuapp.com/create-payment-intent', data)
       .then((res) => setClientSecret(res.data.clientSecret))
       .catch((err) => toast.error(err.message));
   }, [data]);
@@ -60,7 +60,7 @@ const StripePayment = ({ data }) => {
 
     if (paymentIntent.status === 'succeeded') {
       axios
-        .post('http://localhost:5000/add-order', paymentMethod)
+        .post('https://e--pathshala.herokuapp.com/add-order', paymentMethod)
         .then((res) => {
           if (res.data.insertedId) {
             event.target.reset();

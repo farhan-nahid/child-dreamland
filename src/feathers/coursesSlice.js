@@ -19,7 +19,7 @@ export const loadCoursesAsync = createAsyncThunk('courses/loadCoursesAsync', asy
 });
 
 export const loadSingleCoursesAsync = createAsyncThunk('courses/loadSingleCoursesAsync', async (payload) => {
-  const response = await axios.get(`http://localhost:5000/course/${payload}`);
+  const response = await axios.get(`https://e--pathshala.herokuapp.com/course/${payload}`);
   return response.data;
 });
 
