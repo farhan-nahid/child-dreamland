@@ -10,6 +10,8 @@
       margin: 0 10px;
       color: #ffffff;
       text-align: center;
+      transition: all linear 0.3s;
+
       .course__image {
         height: 250px;
         width: 100%;
@@ -46,6 +48,27 @@
         padding: 15px 10px 30px 10px;
         h4 {
           margin-bottom: 10px;
+        }
+      }
+      .card__overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        top: 0;
+        left: 0;
+        transform: translateY(-100%);
+        transition: all linear 0.3s;
+        .main__button {
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%);
+        }
+      }
+      &:hover {
+        .card__overlay {
+          transform: translateY(0);
         }
       }
     }

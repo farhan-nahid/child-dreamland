@@ -5,15 +5,16 @@ import './App.scss';
 import Login from './components/AuthComponents/Login/Login';
 import RequiredAdmin from './components/AuthComponents/RequiredAdmin/RequiredAdmin';
 import RequiredAuth from './components/AuthComponents/RequiredAuth/RequiredAuth';
-import RequiredTeacher from './components/AuthComponents/RequiredTeacher/RequiredTeacher';
+//import RequiredTeacher from './components/AuthComponents/RequiredTeacher/RequiredTeacher';
 import SignUp from './components/AuthComponents/SignUp/SignUp';
 import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
-import AllStudents from './components/DashboardComponents/AllStudents/AllStudents';
+import MyCourses from './components/DashboardComponents/MyCourses/MyCourses';
 import Profile from './components/DashboardComponents/Profile/Profile';
 import ScrollToTop from './components/SharedComponents/ScrollToTop/ScrollToTop';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
+import PlaceOrder from './pages/PlaceOrder';
 
 const App = () => {
   return (
@@ -26,6 +27,14 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<SignUp />} />
         <Route
+          path='/place-order/:id'
+          element={
+            <RequiredAuth>
+              <PlaceOrder />
+            </RequiredAuth>
+          }
+        />
+        <Route
           path='/dashboard'
           element={
             <RequiredAuth>
@@ -33,14 +42,6 @@ const App = () => {
             </RequiredAuth>
           }
         >
-          <Route
-            path='/dashboard'
-            element={
-              <RequiredAuth>
-                <Profile />
-              </RequiredAuth>
-            }
-          />
           <Route
             path='/dashboard/profile'
             element={
@@ -50,11 +51,11 @@ const App = () => {
             }
           />
           <Route
-            path='/dashboard/all-students'
+            path='/dashboard/my-courses'
             element={
-              <RequiredTeacher>
-                <AllStudents />
-              </RequiredTeacher>
+              <RequiredAuth>
+                <MyCourses />
+              </RequiredAuth>
             }
           />
           <Route
