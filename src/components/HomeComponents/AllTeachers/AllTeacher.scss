@@ -1,5 +1,5 @@
 #all__teachers {
-  margin-top: 100px;
+  margin: 100px 0;
   .all__teachers__container {
     margin-top: 100px;
     display: grid;
@@ -60,6 +60,19 @@
         p {
           font-size: 22px;
           color: #767676;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #all__teachers {
+    margin: 50px 0;
+    .all__teachers__container {
+      .teacher__card {
+        .teacher__image {
+          height: auto;
         }
       }
     }

@@ -1,3 +1,55 @@
+#footer__top {
+  background-color: #00938d;
+  padding: 50px 0;
+  .footer__card {
+    h5 {
+      font-size: 35px;
+      color: #fff;
+    }
+
+    p {
+      margin: 30px 0;
+      color: #fff;
+      font-size: 25px;
+      width: 90%;
+    }
+
+    form {
+      display: flex;
+      input {
+        width: 85%;
+        padding: 8px 15px;
+        border: 0;
+        outline: 0;
+      }
+      button {
+        outline: 0;
+        border: 0;
+        background-color: #ffffff;
+        color: #00938d;
+        width: 50px;
+      }
+    }
+
+    button {
+      border: 2px solid #ffffff;
+      span {
+        color: #00938d;
+      }
+      &::before,
+      &::after {
+        background-color: #ffffff;
+      }
+      &:hover {
+        &::before,
+        &::after {
+          background-color: #00938d;
+        }
+      }
+    }
+  }
+}
+
 footer {
   background: url('../../../images/footer-bg.jpg') no-repeat center / cover fixed;
   padding: 100px 0 30px 0;
@@ -24,13 +76,7 @@ footer {
 
   .footer__container {
     margin: 50px 0;
-    display: flex;
     .footer__item {
-      width: 23%;
-      margin-left: 2%;
-      &:nth-child(1) {
-        margin-left: 0;
-      }
       h6 {
         text-align: left;
       }

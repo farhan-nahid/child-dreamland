@@ -1,11 +1,7 @@
 #principal {
   margin-top: 100px;
   .principal__container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     .principal__image {
-      width: 450px;
       img {
         height: 570px;
         width: 100%;
@@ -13,10 +9,25 @@
       }
     }
     .principal__content {
-      margin-left: 50px;
-      width: 600px;
       button {
         margin-top: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #principal {
+    .principal__container {
+      .principal__image {
+        margin: 0 auto;
+        text-align: center;
+        img {
+          width: 80%;
+        }
+      }
+      .principal__content {
+        text-align: center;
       }
     }
   }

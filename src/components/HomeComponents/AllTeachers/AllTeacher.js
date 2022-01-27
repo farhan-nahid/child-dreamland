@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { AiOutlineStar } from 'react-icons/ai';
 import t1 from '../../../images/t1.jpg';
@@ -72,6 +73,9 @@ const teachers = [
 ];
 
 const AllTeacher = () => {
+  useEffect(() => {
+    axios.get('http://localhost:5000/orders/test@student6.com').then((res) => console.log(res.data));
+  }, []);
   return (
     <section id='all__teachers'>
       <Container>
