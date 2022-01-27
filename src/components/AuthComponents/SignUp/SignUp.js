@@ -10,15 +10,8 @@ import './signUp.scss';
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState({});
   const [image, setImage] = useState('');
   const { emailSignup, disableLoading } = useAuth();
-
-  const handelBlur = (e) => {
-    const newData = { ...data };
-    newData[e.target.name] = e.target.value;
-    setData(newData);
-  };
 
   const handleImageUpload = (e) => {
     const imageData = new FormData();
@@ -38,26 +31,34 @@ const SignUp = () => {
   };
 
   const handelSubmit = (e) => {
+    const pass1 = e.target.pass1.value;
+    const pass2 = e.target.pass2.value;
+    const phNumber = e.target.phNumber.value;
+
     e.preventDefault();
-    if (data.pass1 !== data.pass2) {
+    if (pass1 !== pass2) {
       return toast.error('Password not Matched..');
-    } else if (data.pass1.length < 8) {
+    } else if (pass1.length < 8) {
       toast.error('Your Password must have 8 characters...');
-    } else if (!/(?=.*?[A-Z])/.test(data.pass1)) {
+    } else if (!/(?=.*?[A-Z])/.test(pass1)) {
       toast.error('Password should be at least 1 Uppercase');
-    } else if (!/(?=.*?[0-9])/.test(data.pass1)) {
+    } else if (!/(?=.*?[0-9])/.test(pass1)) {
       toast.error('Password should be at least 1 Number');
-    } else if (!/(?=.*?[#?!@$%^&*-])/.test(data.pass1)) {
+    } else if (!/(?=.*?[#?!@$%^&*-])/.test(pass1)) {
       toast.error('Password should be at least 1 Spacial character');
-    } else if (data.phNumber.length <= 10) {
+    } else if (phNumber.length !== 11) {
       return toast.error('Your Phone Number must have 11 digit..');
+    } else if (!image) {
+      return toast.error('Please Upload Your Image..');
     } else {
-      data.fullName = `${data.fName.trim()} ${data.lName.trim()}`;
+      const data = {};
+      data.fullName = `${e.target.fName.value.trim()} ${e.target.lName.value.trim()}`;
+      data.email = e.target.email.value;
+      data.password = pass1;
+      data.phNumber = phNumber;
+      data.position = e.target.position.value;
       data.userImage = image;
       data.approvedTeacher = false;
-      delete data.fName;
-      delete data.lName;
-      delete data.pass2;
       emailSignup(data, navigate);
     }
   };
@@ -80,7 +81,6 @@ const SignUp = () => {
                     spellCheck='false'
                     name='fName'
                     required
-                    onBlur={handelBlur}
                   />
                 </Form.Group>
               </Col>
@@ -94,7 +94,6 @@ const SignUp = () => {
                     name='lName'
                     spellCheck='false'
                     required
-                    onBlur={handelBlur}
                   />
                 </Form.Group>
               </Col>
@@ -103,12 +102,11 @@ const SignUp = () => {
                   <Form.Label>Email address</Form.Label>
                   <Form.Control
                     type='email'
-                    placeholder='Enter email address'
+                    placeholder='Email Address (EX:pathshala@gmail.com)'
                     autoComplete='off'
                     spellCheck='false'
                     name='email'
                     required
-                    onBlur={handelBlur}
                   />
                 </Form.Group>
               </Col>
@@ -117,39 +115,32 @@ const SignUp = () => {
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
                     type='number'
-                    placeholder='Enter Phone Number'
+                    placeholder='BD Num (EX:01700000000)'
                     autoComplete='off'
                     spellCheck='false'
                     name='phNumber'
                     required
-                    onBlur={handelBlur}
                   />
                 </Form.Group>
               </Col>
               <Col lg={6} md={6} sm={12} xs={12}>
                 <Form.Group className='mb-3' controlId='registerPass1'>
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type='password' placeholder='Password' name='pass1' required onBlur={handelBlur} />
+                  <Form.Control type='password' placeholder='Password' name='pass1' required />
                 </Form.Group>
               </Col>
               <Col lg={6} md={6} sm={12} xs={12}>
                 <Form.Group className='mb-3' controlId='registerPass2'>
                   <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type='password'
-                    placeholder='Confirm Password'
-                    name='pass2'
-                    required
-                    onBlur={handelBlur}
-                  />
+                  <Form.Control type='password' placeholder='Confirm Password' name='pass2' required />
                 </Form.Group>
               </Col>
               <Col lg={6} md={6} sm={12} xs={12}>
                 <Form.Group controlId='type' className='mb-3'>
                   <Form.Label>Your Position</Form.Label>
-                  <Form.Select size='sm' name='position' required onBlur={handelBlur}>
-                    <option>Student</option>
-                    <option>Teacher</option>
+                  <Form.Select size='sm' name='position' required>
+                    <option value='Student'>Student</option>
+                    <option value='Teacher'>Teacher</option>
                   </Form.Select>
                 </Form.Group>
               </Col>
@@ -161,7 +152,7 @@ const SignUp = () => {
               </Col>
               <Col lg={12} md={12} sm={12} xs={12} className='text-center'>
                 <button type='submit' className='main__button' disabled={disableLoading}>
-                  <span>Register</span>
+                  <span>{disableLoading ? 'loading...' : 'Register'}</span>
                 </button>
               </Col>
             </Row>

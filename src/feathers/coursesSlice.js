@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 
 const initialState = {
   coursesState: [],
+  status: 'idle',
 };
 
 export const postCoursesAsync = createAsyncThunk('courses/postCoursesAsync', async (payload) => {
@@ -22,26 +23,25 @@ export const coursesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(postCoursesAsync.pending, (state, action) => {
-      toast.loading('Processing... Please Wait!!');
+      toast.loading('Adding... Please Wait!!');
     });
     builder.addCase(postCoursesAsync.fulfilled, (state, { payload }) => {
       toast.dismiss();
-      toast.success('Your Product is Successfully added!!!');
+      toast.success('Added Successfully...');
     });
     builder.addCase(postCoursesAsync.rejected, (state, { error: { message } }) => {
       toast.dismiss();
       toast.error(message);
     });
     builder.addCase(loadCoursesAsync.pending, (state, action) => {
-      toast.loading('Courses are loading... Please Wait!!');
+      state.status = 'Pending';
     });
     builder.addCase(loadCoursesAsync.fulfilled, (state, { payload }) => {
-      toast.dismiss();
+      state.status = 'Success';
       state.coursesState = payload;
-      toast.success('All Courses are loaded Successfully !!!');
     });
     builder.addCase(loadCoursesAsync.rejected, (state, { error: { message } }) => {
-      toast.dismiss();
+      state.status = 'Rejected';
       toast.error(message);
     });
   },

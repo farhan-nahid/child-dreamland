@@ -9,7 +9,9 @@ const Profile = () => {
     <section id='my__profile'>
       <h2>My Profile</h2>
       <div className='profile__container'>
-        <img src={loggedInUser?.photoURL} alt={loggedInUser?.displayName} />
+        <div className='profile__image'>
+          <img src={loggedInUser?.photoURL} alt={loggedInUser?.displayName} />
+        </div>
         <h5 className={loggedInUser?.emailVerified ? 'verified' : 'unVerified'}>
           {loggedInUser?.emailVerified ? 'Verified' : 'Not Verified'}
         </h5>

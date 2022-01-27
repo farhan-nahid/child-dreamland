@@ -11,13 +11,16 @@ import {
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 import initializeAuthentication from '../components/AuthComponents/Firebase/firebase.init';
+import { postUsersAsync } from '../feathers/usersSlice';
 
 const useFirebase = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [disableLoading, setIsDisableLoading] = useState(false);
+  const dispatch = useDispatch();
 
   initializeAuthentication();
   const auth = getAuth();
@@ -27,19 +30,22 @@ const useFirebase = () => {
   const emailSignup = (user, navigate) => {
     setIsDisableLoading(true);
     const loading = toast.loading('Creating User... Please wait!!!');
-    createUserWithEmailAndPassword(auth, user.email, user.pass1)
+    createUserWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
         updateProfile(auth.currentUser, {
           photoURL: user.userImage,
           displayName: user.fullName,
         });
         sendEmailVerification(auth.currentUser);
-        saveUserForEmail(user);
-        toast.dismiss(loading);
-        toast.success('Creating a new user successfully...');
-        setLoggedInUser(userCredential.user);
-        navigate('/');
-        setIsDisableLoading(false);
+        dispatch(postUsersAsync(user)).then((res) => {
+          if (res.payload.insertedId) {
+            toast.dismiss(loading);
+            toast.success('Creating a new user successfully...');
+            setLoggedInUser(userCredential.user);
+            navigate('/');
+            setIsDisableLoading(false);
+          }
+        });
       })
       .catch((error) => {
         toast.dismiss(loading);
@@ -69,19 +75,6 @@ const useFirebase = () => {
         setIsDisableLoading(false);
       })
       .finally(() => setIsLoading(false));
-  };
-
-  // save user to mongoDB (Email)
-
-  const saveUserForEmail = (user) => {
-    axios
-      .post('https://e--pathshala.herokuapp.com/user', user)
-      .then((res) => {
-        if (res.data.upsertedId) {
-          toast.success('User Added in our Database Successfully!');
-        }
-      })
-      .catch((err) => toast.error(err.message));
   };
 
   // signOut function
