@@ -18,6 +18,23 @@ const AddCourse = () => {
     setData(newData);
   };
 
+  const handleImageUpload = (e) => {
+    const imageData = new FormData();
+    imageData.set('key', '1c7b42d86523b93639ae849aae708b2e');
+    imageData.append('image', e.target.files[0]);
+    const loading = toast.loading('Uploading... Please wait!');
+    axios
+      .post('https://api.imgbb.com/1/upload', imageData)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success('Successfully Upload The Image...!!!');
+          setImage(res.data.data.display_url);
+        }
+      })
+      .catch((error) => toast.error(error.message))
+      .finally(() => toast.dismiss(loading));
+  };
+
   const handelSubmit = (e) => {
     e.preventDefault();
     data.image = image;
@@ -36,23 +53,6 @@ const AddCourse = () => {
         }
       });
     }
-  };
-
-  const handleImageUpload = (e) => {
-    const imageData = new FormData();
-    imageData.set('key', '1c7b42d86523b93639ae849aae708b2e');
-    imageData.append('image', e.target.files[0]);
-    const loading = toast.loading('Uploading... Please wait!');
-    axios
-      .post('https://api.imgbb.com/1/upload', imageData)
-      .then((res) => {
-        if (res.status === 200) {
-          toast.success('Successfully Upload The Image...!!!');
-          setImage(res.data.data.display_url);
-        }
-      })
-      .catch((error) => toast.error(error.message))
-      .finally(() => toast.dismiss(loading));
   };
 
   return (

@@ -5,9 +5,10 @@ import './App.scss';
 import Login from './components/AuthComponents/Login/Login';
 import RequiredAdmin from './components/AuthComponents/RequiredAdmin/RequiredAdmin';
 import RequiredAuth from './components/AuthComponents/RequiredAuth/RequiredAuth';
-//import RequiredTeacher from './components/AuthComponents/RequiredTeacher/RequiredTeacher';
+import RequiredTeacher from './components/AuthComponents/RequiredTeacher/RequiredTeacher';
 import SignUp from './components/AuthComponents/SignUp/SignUp';
 import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
+import AddAssignment from './components/DashboardComponents/AddAssignment/AddAssignment';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
 import CourseContent from './components/DashboardComponents/CourseContent/CourseContent';
 import MyCourses from './components/DashboardComponents/MyCourses/MyCourses';
@@ -65,6 +66,14 @@ const App = () => {
               <RequiredAuth>
                 <CourseContent />
               </RequiredAuth>
+            }
+          />
+          <Route
+            path='/dashboard/add-assignment'
+            element={
+              <RequiredTeacher>
+                <AddAssignment />
+              </RequiredTeacher>
             }
           />
           <Route

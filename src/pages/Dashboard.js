@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { AiOutlineFileAdd, AiOutlinePlus } from 'react-icons/ai';
-import { BiHomeAlt, BiLogOut, BiUserCheck } from 'react-icons/bi';
+import { BiHomeAlt, BiLogOut, BiTask, BiUserCheck } from 'react-icons/bi';
 import { MdOutlineManageAccounts } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
@@ -35,16 +35,18 @@ const Dashboard = () => {
                   <BiUserCheck /> My Profile
                 </NavLink>
               </li>
+
+              <li>
+                <NavLink to='/dashboard/my-courses' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                  <AiOutlineFileAdd /> My Courses
+                </NavLink>
+              </li>
+
               {user.position === 'Student' && (
                 <>
                   <li>
-                    <NavLink to='/dashboard/my-courses' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                      <AiOutlineFileAdd /> My Courses
-                    </NavLink>
-                  </li>
-                  <li>
                     <NavLink to='/dashboard/my-assignments' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                      <BiUserCheck /> My Assignments
+                      <BiTask /> My Assignments
                     </NavLink>
                   </li>
                 </>
@@ -67,11 +69,13 @@ const Dashboard = () => {
                       <AiOutlinePlus /> Add Course
                     </NavLink>
                   </li>
+
                   <li>
                     <NavLink to='/dashboard/add-course' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
                       <MdOutlineManageAccounts /> Manage Users
                     </NavLink>
                   </li>
+
                   <li>
                     <NavLink to='/dashboard/add-admin' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
                       <AiOutlinePlus /> Add Admin
@@ -79,11 +83,13 @@ const Dashboard = () => {
                   </li>
                 </>
               )}
+
               <li>
                 <NavLink to='/'>
                   <BiHomeAlt /> Go Home
                 </NavLink>
               </li>
+
               <li>
                 <NavLink to='/' onClick={logOut}>
                   <BiLogOut /> Log Out

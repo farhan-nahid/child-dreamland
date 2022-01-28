@@ -18,7 +18,6 @@ const MyCourses = () => {
   }, [dispatch, loggedInUser]);
 
   const orders = useSelector((state) => state.orders);
-  console.log(orders);
 
   return (
     <>
@@ -26,22 +25,22 @@ const MyCourses = () => {
         <PreLoader />
       ) : (
         <section id='my__course'>
-          {orders.status === 'Success' && !orders.ordersState.length && (
-            <h3 className='placeholder__text'>You don't Buy any Course</h3>
-          )}
           <h2>My Course </h2>
+          {orders.status === 'Success' && !orders.ordersState.length && (
+            <div className='placeholder__text'>
+              <span>You don't Buy any Course</span>
+            </div>
+          )}
+
           <Row className='g-5 course__container'>
             {orders.ordersState.map((order, idx) => {
-              const { courseName, phone } = order.billing_details;
+              const { courseName } = order.billing_details;
 
               return (
                 <Col key={idx} lg={6} md={6} sm={12} xs={12}>
                   <div className='order__card'>
-                    <div className='card__content'>
-                      <div className='order__banner'>
-                        <h3>{courseName}</h3>
-                      </div>
-                      <h4>Phone: {phone}</h4>
+                    <div className='order__banner'>
+                      <h3>{courseName}</h3>
                     </div>
                     <button
                       className='main__button'

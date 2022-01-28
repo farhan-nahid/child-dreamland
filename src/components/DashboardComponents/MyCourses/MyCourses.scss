@@ -1,4 +1,24 @@
 #my__course {
+  .placeholder__text {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+      background: #dddddd73;
+      color: #a6a2a2;
+      padding: 30px;
+      line-height: 42px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 50px;
+    }
+  }
   .course__container {
     margin: 50px auto;
     .order__card {
@@ -6,28 +26,21 @@
       padding: 20px;
       border-radius: 10px;
       background: #dddddd73;
-      .card__content {
+
+      .order__banner {
+        border-radius: 10px;
+        background: #ffffff;
         display: flex;
+        justify-content: center;
         align-items: center;
-        .order__banner {
-          border-radius: 10px;
-          margin-right: 20px;
-          background: #ffffff;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-          h3 {
-            color: #a6a2a2;
-            text-align: center;
-          }
-        }
-        h4 {
-          font-size: 18px;
-          color: #8e8686;
+        padding: 20px 30px;
+        height: 150px;
+        h3 {
+          color: #a6a2a2;
           text-align: center;
         }
       }
+
       .main__button {
         width: 130px;
         margin-top: 20px;
