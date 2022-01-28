@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -18,7 +17,6 @@ import { postUsersAsync } from '../feathers/usersSlice';
 const useFirebase = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [disableLoading, setIsDisableLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -104,29 +102,7 @@ const useFirebase = () => {
     return () => unSubscrived;
   }, [auth]);
 
-  // Check Admin or not
-
-  useEffect(() => {
-    axios
-      .get(`https://e--pathshala.herokuapp.com/user?email=${loggedInUser?.email}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('ePATHSHALA_token')}`,
-        },
-      })
-      .then((res) => setIsAdmin(res.data.admin))
-      .catch((err) => toast.error(err.message))
-      .finally(() => setIsLoading(false));
-  }, [loggedInUser?.email]);
-
-  return {
-    isLoading,
-    loggedInUser,
-    isAdmin,
-    disableLoading,
-    emailSignup,
-    emailSignIn,
-    logOut,
-  };
+  return { isLoading, loggedInUser, disableLoading, emailSignup, emailSignIn, logOut };
 };
 
 export default useFirebase;

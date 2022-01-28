@@ -5,21 +5,22 @@ import { BiHomeAlt, BiLogOut, BiTask, BiUserCheck } from 'react-icons/bi';
 import { MdOutlineManageAccounts } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
-import { loadSingleUsersAsync } from '../feathers/usersSlice';
+import { checkAdminUsersAsync, loadSingleUsersAsync } from '../feathers/usersSlice';
 import useAuth from '../hooks/useAuth';
 import './Dashboard.scss';
 
 const Dashboard = () => {
-  const { isAdmin, logOut, loggedInUser } = useAuth();
+  const { logOut, loggedInUser } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (loggedInUser) {
       dispatch(loadSingleUsersAsync(loggedInUser?.email));
+      dispatch(checkAdminUsersAsync(loggedInUser.email));
     }
   }, [dispatch, loggedInUser]);
 
-  const user = useSelector((state) => state?.users?.normalUsersState);
+  const user = useSelector((state) => state.users);
 
   return (
     <section id='dashboard'>
@@ -42,7 +43,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
 
-              {user.position === 'Student' && (
+              {user.normalUsersState.position === 'Student' && (
                 <>
                   <li>
                     <NavLink to='/dashboard/my-assignments' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
@@ -52,7 +53,7 @@ const Dashboard = () => {
                 </>
               )}
 
-              {user.position === 'Teacher' && (
+              {user.normalUsersState.position === 'Teacher' && (
                 <>
                   <li>
                     <NavLink to='/dashboard/add-assignment' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
@@ -62,7 +63,7 @@ const Dashboard = () => {
                 </>
               )}
 
-              {isAdmin && (
+              {user.isAdmin && (
                 <>
                   <li>
                     <NavLink to='/dashboard/add-course' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
