@@ -13,7 +13,11 @@ export const postUsersAsync = createAsyncThunk('users/postUsersAsync', async (pa
 });
 
 export const loadSingleUsersAsync = createAsyncThunk('users/loadSingleUsersAsync', async (payload) => {
-  const response = await axios.get(`https://e--pathshala.herokuapp.com/normal-users/${payload}`);
+  const response = await axios.get(`https://e--pathshala.herokuapp.com/users?email=${payload}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('ePATHSHALA_token')}`,
+    },
+  });
   return response.data;
 });
 

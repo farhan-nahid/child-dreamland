@@ -108,7 +108,11 @@ const useFirebase = () => {
 
   useEffect(() => {
     axios
-      .get(`https://e--pathshala.herokuapp.com/user/${loggedInUser?.email}`)
+      .get(`https://e--pathshala.herokuapp.com/user?email=${loggedInUser?.email}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('ePATHSHALA_token')}`,
+        },
+      })
       .then((res) => setIsAdmin(res.data.admin))
       .catch((err) => toast.error(err.message))
       .finally(() => setIsLoading(false));

@@ -19,7 +19,11 @@ export const createPaymentIntent = createAsyncThunk('orders/createPaymentIntent'
 });
 
 export const loadOrdersAsync = createAsyncThunk('orders/loadOrdersAsync', async (payload) => {
-  const response = await axios.get(`https://e--pathshala.herokuapp.com/orders?email=${payload}`);
+  const response = await axios.get(`https://e--pathshala.herokuapp.com/orders?email=${payload}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('ePATHSHALA_token')}`,
+    },
+  });
   return response.data;
 });
 
