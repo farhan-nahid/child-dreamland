@@ -99,7 +99,7 @@ const Dashboard = () => {
           </aside>
         </Col>
         <Col lg={9} md={12} sm={12} xs={12} className='side__bg'>
-          <Container>
+          <Container className='p-3'>
             <Outlet />
           </Container>
         </Col>

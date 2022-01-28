@@ -40,44 +40,52 @@ const AddAssignment = () => {
   return (
     <section id='add__assignment'>
       <h2>Add Assignment</h2>
-      <Form className='add__assignment__container' onSubmit={handelSubmit}>
-        <Row>
-          <Col lg={6} md={6} sm={12} xs={12}>
-            <Form.Group className='mb-3' controlId='assignmentName'>
-              <Form.Label>Assignment Name</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter assignment Name'
-                autoComplete='off'
-                spellCheck='false'
-                name='assignmentName'
-                required
-                onBlur={handelBlur}
-              />
-            </Form.Group>
-          </Col>
+      {!loggedInUser?.emailVerified ? (
+        <div className='unknown__teacher'>
+          Please Check your Email Account. When you create your account we send an verification email to your account.
+          Please confirm it to add assignments for students. <br /> <br />
+          N:B: After Verify Your email please refresh the page
+        </div>
+      ) : (
+        <Form className='add__assignment__container' onSubmit={handelSubmit}>
+          <Row>
+            <Col lg={6} md={6} sm={12} xs={12}>
+              <Form.Group className='mb-3' controlId='assignmentName'>
+                <Form.Label>Assignment Name</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Enter assignment Name'
+                  autoComplete='off'
+                  spellCheck='false'
+                  name='assignmentName'
+                  required
+                  onBlur={handelBlur}
+                />
+              </Form.Group>
+            </Col>
 
-          <Col lg={6} md={6} sm={12} xs={12}>
-            <Form.Group className='mb-3' controlId='assignmentMark'>
-              <Form.Label>Assignment Mark</Form.Label>
-              <Form.Control
-                type='number'
-                placeholder='Enter assignment mark'
-                autoComplete='off'
-                spellCheck='false'
-                name='assignmentMark'
-                required
-                onBlur={handelBlur}
-              />
-            </Form.Group>
-          </Col>
-          <Col lg={12} md={12} sm={12} xs={12} className='text-center mt-5'>
-            <button type='submit' className='main__button' disabled={isDisable}>
-              <span>{isDisable ? 'Adding...' : 'Add Assignment'}</span>
-            </button>
-          </Col>
-        </Row>
-      </Form>
+            <Col lg={6} md={6} sm={12} xs={12}>
+              <Form.Group className='mb-3' controlId='assignmentMark'>
+                <Form.Label>Assignment Mark</Form.Label>
+                <Form.Control
+                  type='number'
+                  placeholder='Enter assignment mark'
+                  autoComplete='off'
+                  spellCheck='false'
+                  name='assignmentMark'
+                  required
+                  onBlur={handelBlur}
+                />
+              </Form.Group>
+            </Col>
+            <Col lg={12} md={12} sm={12} xs={12} className='text-center mt-5'>
+              <button type='submit' className='main__button' disabled={isDisable}>
+                <span>{isDisable ? 'Adding...' : 'Add Assignment'}</span>
+              </button>
+            </Col>
+          </Row>
+        </Form>
+      )}
     </section>
   );
 };

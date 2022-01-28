@@ -20,7 +20,7 @@ const Profile = () => {
   return (
     <section id='my__profile'>
       <h2>My Profile</h2>
-      {user.status === 'Pending' ? (
+      {user.status.loadUser === 'Pending' ? (
         <PreLoader />
       ) : (
         <div className='profile__container'>

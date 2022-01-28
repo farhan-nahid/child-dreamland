@@ -30,7 +30,8 @@ const MyAssignment = () => {
           {!loggedInUser?.emailVerified ? (
             <div className='unknown__student'>
               Please Check your Email Account. When you create your account we send an verification email to your
-              account. Please confirm it to see your assignments.
+              account. Please confirm it to see your assignments. <br /> <br />
+              N:B: After Verify Your email please refresh the page
             </div>
           ) : (
             <Table striped bordered hover responsive className='assignment__table'>
