@@ -9,6 +9,7 @@ import RequiredAuth from './components/AuthComponents/RequiredAuth/RequiredAuth'
 import SignUp from './components/AuthComponents/SignUp/SignUp';
 import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
+import CourseContent from './components/DashboardComponents/CourseContent/CourseContent';
 import MyCourses from './components/DashboardComponents/MyCourses/MyCourses';
 import Profile from './components/DashboardComponents/Profile/Profile';
 import ScrollToTop from './components/SharedComponents/ScrollToTop/ScrollToTop';
@@ -55,6 +56,14 @@ const App = () => {
             element={
               <RequiredAuth>
                 <MyCourses />
+              </RequiredAuth>
+            }
+          />
+          <Route
+            path='/dashboard/course-content/:name'
+            element={
+              <RequiredAuth>
+                <CourseContent />
               </RequiredAuth>
             }
           />

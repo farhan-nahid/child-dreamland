@@ -1,6 +1,5 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row } from 'react-bootstrap';
 import { AiOutlineStar } from 'react-icons/ai';
 import t1 from '../../../images/t1.jpg';
 import t2 from '../../../images/t2.jpg';
@@ -73,9 +72,6 @@ const teachers = [
 ];
 
 const AllTeacher = () => {
-  useEffect(() => {
-    axios.get('http://localhost:5000/orders/test@student6.com').then((res) => console.log(res.data));
-  }, []);
   return (
     <section id='all__teachers'>
       <Container>
@@ -83,11 +79,11 @@ const AllTeacher = () => {
           <AiOutlineStar /> HARE OUR MENTORS <AiOutlineStar />
         </h6>
         <h4 className='main__title text-center'>OUR POPULAR MENTORS</h4>
-        <div className='all__teachers__container'>
+        <Row className='all__teachers__container g-4'>
           {teachers.map((teacher) => (
             <TeacherCard key={teacher.id} teacher={teacher} />
           ))}
-        </div>
+        </Row>
       </Container>
     </section>
   );

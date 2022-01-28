@@ -2,14 +2,10 @@
   margin: 100px 0;
   .all__teachers__container {
     margin-top: 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-    gap: 30px 20px;
     .teacher__card {
       background-color: #ffffff;
       border: 1px solid #eaedf2;
       border-radius: 7px;
-      margin-bottom: 30px;
       position: relative;
       -webkit-transition: all 0.3s ease 0s;
       -moz-transition: all 0.3s ease 0s;
@@ -17,9 +13,12 @@
       transition: all 0.3s ease 0s;
       box-shadow: 0 0 13px #0000001a;
       overflow: hidden;
+      width: 95%;
+      margin: 0 auto;
       .teacher__image {
         height: 270px;
         width: 100%;
+        object-fit: cover;
         position: relative;
         &::after {
           position: absolute;

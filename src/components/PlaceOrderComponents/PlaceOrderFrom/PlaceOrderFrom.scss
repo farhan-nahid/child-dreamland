@@ -15,6 +15,23 @@
   .place__order__form {
     margin: 100px auto;
 
+    .form-control {
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    .form-check-input,
+    .form-control,
+    .form-select {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .form-control::placeholder {
+      font-size: 15px;
+      font-weight: 300;
+    }
+
     .place__stripe {
       width: 90%;
       margin: 0 auto;

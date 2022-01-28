@@ -1,27 +1,32 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Spinner } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { createPaymentIntent, emptyPrev, postOrdersAsync } from '../../../feathers/ordersSlice';
 
 const StripePayment = ({ data }) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { phNumber, fullName, email, position, name, price } = data;
-  const [clientSecret, setClientSecret] = useState('');
   const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
-    axios
-      .post('https://e--pathshala.herokuapp.com/create-payment-intent', data)
-      .then((res) => setClientSecret(res.data.clientSecret))
-      .catch((err) => toast.error(err.message));
-  }, [data]);
+    dispatch(createPaymentIntent(data));
+    dispatch(emptyPrev());
+  }, [dispatch, data]);
+
+  const clientSecret = useSelector((state) => state.orders.clientSecret);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!clientSecret) {
+      return;
+    }
+
     if (!stripe || !elements) {
       return;
     }
@@ -58,18 +63,15 @@ const StripePayment = ({ data }) => {
 
     intentError && toast.error(intentError);
 
-    if (paymentIntent.status === 'succeeded') {
-      axios
-        .post('https://e--pathshala.herokuapp.com/add-order', paymentMethod)
-        .then((res) => {
-          if (res.data.insertedId) {
-            event.target.reset();
-            setProcessing(false);
-            toast.success('Payment Successful');
-            navigate('/dashboard/my-courses');
-          }
-        })
-        .catch((err) => toast.error(err.message));
+    if (paymentIntent.status.toLowerCase() === 'succeeded') {
+      dispatch(postOrdersAsync(paymentMethod)).then((res) => {
+        if (res.payload.insertedId) {
+          event.target.reset();
+          setProcessing(false);
+          toast.success('Payment Successful');
+          navigate('/dashboard/my-courses');
+        }
+      });
     }
   };
 
@@ -94,15 +96,21 @@ const StripePayment = ({ data }) => {
             }}
           />
         </Col>
-        <Col lg={12} md={12} sm={12} xs={12} className='text-center'>
-          {!processing ? (
-            <button className='main__button' disabled={!stripe}>
-              <span>Place Order</span>
-            </button>
-          ) : (
+        {clientSecret ? (
+          <Col lg={12} md={12} sm={12} xs={12} className='text-center'>
+            {!processing ? (
+              <button className='main__button' disabled={!stripe}>
+                <span>Place Order</span>
+              </button>
+            ) : (
+              <Spinner animation='border' />
+            )}
+          </Col>
+        ) : (
+          <div className='text-center'>
             <Spinner animation='border' />
-          )}
-        </Col>
+          </div>
+        )}
       </Row>
     </form>
   );
