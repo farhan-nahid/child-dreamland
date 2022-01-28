@@ -1,0 +1,61 @@
+#my__assignments {
+  .placeholder__text {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+      background: #dddddd73;
+      color: #a6a2a2;
+      padding: 30px;
+      line-height: 42px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 50px;
+    }
+  }
+
+  .unknown__student {
+    margin-top: 200px;
+    padding: 50px;
+    background: #dddddd73;
+    color: #a6a2a2;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .table > :not(:first-child) {
+    border-top: 2px solid transparent;
+  }
+  .assignment__table {
+    margin: 50px 0;
+
+    thead {
+      tr {
+        th {
+          padding: 15px 10px;
+          text-align: center;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 10px 5px;
+          text-align: center;
+          img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+}

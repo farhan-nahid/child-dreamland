@@ -5,12 +5,14 @@ import './App.scss';
 import Login from './components/AuthComponents/Login/Login';
 import RequiredAdmin from './components/AuthComponents/RequiredAdmin/RequiredAdmin';
 import RequiredAuth from './components/AuthComponents/RequiredAuth/RequiredAuth';
+import RequiredStudent from './components/AuthComponents/RequiredStudent/RequiredStudent';
 import RequiredTeacher from './components/AuthComponents/RequiredTeacher/RequiredTeacher';
 import SignUp from './components/AuthComponents/SignUp/SignUp';
 import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
 import AddAssignment from './components/DashboardComponents/AddAssignment/AddAssignment';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
 import CourseContent from './components/DashboardComponents/CourseContent/CourseContent';
+import MyAssignment from './components/DashboardComponents/MyAssignment/MyAssignment';
 import MyCourses from './components/DashboardComponents/MyCourses/MyCourses';
 import Profile from './components/DashboardComponents/Profile/Profile';
 import ScrollToTop from './components/SharedComponents/ScrollToTop/ScrollToTop';
@@ -74,6 +76,14 @@ const App = () => {
               <RequiredTeacher>
                 <AddAssignment />
               </RequiredTeacher>
+            }
+          />
+          <Route
+            path='/dashboard/my-assignments'
+            element={
+              <RequiredStudent>
+                <MyAssignment />
+              </RequiredStudent>
             }
           />
           <Route

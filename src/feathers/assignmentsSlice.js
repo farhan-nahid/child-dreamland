@@ -5,22 +5,21 @@ import toast from 'react-hot-toast';
 const initialState = {
   assignmentsState: [],
   status: { loadAssignment: '', deleteAssignment: '' },
-  clientSecret: '',
 };
 
 export const postAssignmentAsync = createAsyncThunk('assignments/postAssignmentAsync', async (payload) => {
-  const response = await axios.post(`http://localhost:5000/add-assignment`, payload);
+  const response = await axios.post(`https://e--pathshala.herokuapp.com/add-assignment`, payload);
   return response.data;
 });
 
 export const loadAssignmentAsync = createAsyncThunk('assignments/loadAssignmentAsync', async () => {
-  const response = await axios.get(`http://localhost:5000/all-assignments`);
+  const response = await axios.get(`https://e--pathshala.herokuapp.com/all-assignments`);
   return response.data;
 });
 
 export const deleteAssignmentAsync = createAsyncThunk('assignments/deleteAssignmentAsync', async (payload) => {
-  const response = await axios.get(`http://localhost:5000/?id=${payload}`);
-  return response.data;
+  // const response = await axios.get(`https://e--pathshala.herokuapp.com/?id=${payload}`);
+  // return response.data;
 });
 
 export const assignmentsSlice = createSlice({

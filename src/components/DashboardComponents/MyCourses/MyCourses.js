@@ -20,42 +20,37 @@ const MyCourses = () => {
   const orders = useSelector((state) => state.orders);
 
   return (
-    <>
+    <section id='my__course'>
+      <h2>My Course </h2>
+      {orders.status === 'Success' && !orders.ordersState.length && (
+        <div className='placeholder__text'>
+          <span>You don't Buy any Course</span>
+        </div>
+      )}
+
       {orders.status === 'Pending' ? (
         <PreLoader />
       ) : (
-        <section id='my__course'>
-          <h2>My Course </h2>
-          {orders.status === 'Success' && !orders.ordersState.length && (
-            <div className='placeholder__text'>
-              <span>You don't Buy any Course</span>
-            </div>
-          )}
+        <Row className='g-5 course__container'>
+          {orders.ordersState.map((order, idx) => {
+            const { courseName } = order.billing_details;
 
-          <Row className='g-5 course__container'>
-            {orders.ordersState.map((order, idx) => {
-              const { courseName } = order.billing_details;
-
-              return (
-                <Col key={idx} lg={6} md={6} sm={12} xs={12}>
-                  <div className='order__card'>
-                    <div className='order__banner'>
-                      <h3>{courseName}</h3>
-                    </div>
-                    <button
-                      className='main__button'
-                      onClick={() => navigate(`/dashboard/course-content/${courseName}`)}
-                    >
-                      <span>See Content</span>
-                    </button>
+            return (
+              <Col key={idx} lg={6} md={6} sm={12} xs={12}>
+                <div className='order__card'>
+                  <div className='order__banner'>
+                    <h3>{courseName}</h3>
                   </div>
-                </Col>
-              );
-            })}
-          </Row>
-        </section>
+                  <button className='main__button' onClick={() => navigate(`/dashboard/course-content/${courseName}`)}>
+                    <span>See Content</span>
+                  </button>
+                </div>
+              </Col>
+            );
+          })}
+        </Row>
       )}
-    </>
+    </section>
   );
 };
 

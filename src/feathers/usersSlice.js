@@ -3,19 +3,14 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const initialState = {
-  usersState: [],
   normalUsersState: {},
+  status: 'idle',
 };
 
 export const postUsersAsync = createAsyncThunk('users/postUsersAsync', async (payload) => {
   const response = await axios.post(`https://e--pathshala.herokuapp.com/user`, payload);
   return response.data;
 });
-
-// export const loadAllUsersAsync = createAsyncThunk('users/loadAllUsersAsync', async () => {
-//   const response = await axios.get('https://e--pathshala.herokuapp.com/all-courses');
-//   return response.data;
-// });
 
 export const loadSingleUsersAsync = createAsyncThunk('users/loadSingleUsersAsync', async (payload) => {
   const response = await axios.get(`https://e--pathshala.herokuapp.com/normal-users/${payload}`);
@@ -32,22 +27,16 @@ export const usersSlice = createSlice({
     builder.addCase(postUsersAsync.rejected, (state, { error: { message } }) => {
       toast.error(message);
     });
-    // builder.addCase(loadAllUsersAsync.pending, (state, action) => {
-    //   toast.loading('Courses are loading... Please Wait!!');
-    // });
-    // builder.addCase(loadAllUsersAsync.fulfilled, (state, { payload }) => {
-    //   toast.dismiss();
-    //   state.usersState = payload;
-    //   toast.success('All Courses are loaded Successfully !!!');
-    // });
-    // builder.addCase(loadAllUsersAsync.rejected, (state, { error: { message } }) => {
-    //   toast.dismiss();
-    //   toast.error(message);
-    // });
+
+    builder.addCase(loadSingleUsersAsync.pending, (state, action) => {
+      state.status = 'Pending';
+    });
     builder.addCase(loadSingleUsersAsync.fulfilled, (state, { payload }) => {
+      state.status = 'Success';
       state.normalUsersState = payload;
     });
     builder.addCase(loadSingleUsersAsync.rejected, (state, { error: { message } }) => {
+      state.status = 'rejected';
       toast.error(message);
     });
   },
