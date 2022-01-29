@@ -10,6 +10,12 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
+  useEffect(() => {
     dispatch(loadSingleUsersAsync(loggedInUser.email));
   }, [dispatch, loggedInUser]);
 

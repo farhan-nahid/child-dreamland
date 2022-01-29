@@ -1,6 +1,6 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Spinner } from 'react-bootstrap';
+import { Col, Form, Row, Spinner } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -21,18 +21,27 @@ const StripePayment = ({ data }) => {
 
   const clientSecret = useSelector((state) => state.orders.clientSecret);
 
+  const ELEMENT_OPTIONS = {
+    style: {
+      base: {
+        fontSize: '15px',
+        color: '#424770',
+        '::placeholder': {
+          fontSize: '15px',
+          color: '#aab7c4',
+        },
+      },
+      invalid: {
+        color: '#DC3545',
+      },
+    },
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!clientSecret) {
-      return;
-    }
+    const card = elements.getElement(CardNumberElement);
 
-    if (!stripe || !elements) {
-      return;
-    }
-
-    const card = elements.getElement(CardElement);
-    if (card === null) {
+    if (!clientSecret || !stripe || !elements || card === null) {
       return;
     }
 
@@ -45,7 +54,7 @@ const StripePayment = ({ data }) => {
 
     if (error) {
       setProcessing(false);
-      toast.error(error.message);
+      return toast.error(error.message);
     } else {
       paymentMethod.billing_details.email = email;
       paymentMethod.billing_details.name = fullName;
@@ -61,43 +70,57 @@ const StripePayment = ({ data }) => {
       },
     });
 
-    intentError && toast.error(intentError);
+    if (intentError) {
+      return toast.error(intentError);
+    }
 
     if (paymentIntent.status.toLowerCase() === 'succeeded') {
-      dispatch(postOrdersAsync(paymentMethod)).then((res) => {
-        if (res.payload.insertedId) {
-          event.target.reset();
-          setProcessing(false);
-          toast.success('Payment Successful');
-          navigate('/dashboard/my-courses');
-        }
-      });
+      dispatch(postOrdersAsync(paymentMethod))
+        .then((res) => {
+          if (res.payload.insertedId) {
+            event.target.reset();
+            setProcessing(false);
+            toast.success('Payment Successful');
+            navigate('/dashboard/my-courses');
+          }
+        })
+        .catch((err) => console.log(err));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Row>
-        <Col lg={12} md={12} sm={12} xs={12} className='mt-4 mb-5 pb-5'>
-          <CardElement
-            options={{
-              style: {
-                base: {
-                  fontSize: '16px',
-                  color: '#424770',
-                  '::placeholder': {
-                    color: '#aab7c4',
-                  },
-                },
-                invalid: {
-                  color: '#9e2146',
-                },
-              },
-            }}
-          />
+        <Col lg={6} md={6} sm={12} xs={12}>
+          <Form.Group className='mb-3' controlId='address'>
+            <Form.Label>Your Address</Form.Label>
+            <Form.Control type='text' required autoComplete='off' spellCheck='false' placeholder='Enter Your Address' />
+          </Form.Group>
         </Col>
+
+        <Col lg={6} md={6} sm={12} xs={12}>
+          <Form.Group className='mb-3' controlId='cardNumber'>
+            <Form.Label>Card Number</Form.Label>
+            <CardNumberElement className='form-control' options={ELEMENT_OPTIONS} />
+          </Form.Group>
+        </Col>
+
+        <Col lg={6} md={6} sm={12} xs={12}>
+          <Form.Group className='mb-3' controlId='cardCvc'>
+            <Form.Label>Card CVC</Form.Label>
+            <CardCvcElement className='form-control' options={ELEMENT_OPTIONS} />
+          </Form.Group>
+        </Col>
+
+        <Col lg={6} md={6} sm={12} xs={12}>
+          <Form.Group className='mb-3' controlId='cardExpiry'>
+            <Form.Label>Card Expiry</Form.Label>
+            <CardExpiryElement className='form-control' options={ELEMENT_OPTIONS} />
+          </Form.Group>
+        </Col>
+
         {clientSecret ? (
-          <Col lg={12} md={12} sm={12} xs={12} className='text-center'>
+          <Col lg={12} md={12} sm={12} xs={12} className='text-center mt-5 pt-5'>
             {!processing ? (
               <button className='main__button' disabled={!stripe}>
                 <span>Place Order</span>
@@ -112,7 +135,7 @@ const StripePayment = ({ data }) => {
           </div>
         )}
       </Row>
-    </form>
+    </Form>
   );
 };
 

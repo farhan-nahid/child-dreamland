@@ -15,9 +15,12 @@
   .place__order__form {
     margin: 100px auto;
 
+    .InputElement {
+      padding-left: 30px !important;
+    }
     .form-control {
       font-family: inherit;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .form-check-input,
@@ -30,6 +33,7 @@
     .form-control::placeholder {
       font-size: 15px;
       font-weight: 300;
+      color: #aab7c4;
     }
 
     .place__stripe {
@@ -41,4 +45,13 @@
       border-radius: 10px;
     }
   }
+}
+
+.CardBrandIcon-container.is-hidden .CardBrandIcon.is-loaded img,
+.CardBrandIcon-container.is-hidden .CardBrandIcon.is-loaded svg {
+  opacity: 1 !important;
+}
+.CardBrandIcon-container.is-hidden .CardBrandIcon.is-loaded img,
+.CardBrandIcon-container.is-hidden .CardBrandIcon.is-loaded svg {
+  opacity: 1;
 }

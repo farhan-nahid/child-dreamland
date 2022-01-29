@@ -89,7 +89,7 @@ const PlaceOrderFrom = () => {
                   </Form.Group>
                 </Col>
 
-                <Col lg={12} md={12} sm={12} xs={12} className='mb-5'>
+                <Col lg={12} md={12} sm={12} xs={12}>
                   <Elements stripe={stripePromise}>
                     <StripePayment data={data} />
                   </Elements>

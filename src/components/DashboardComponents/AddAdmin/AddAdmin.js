@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { useEffect } from 'axios';
 import React from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
@@ -6,6 +6,12 @@ import swal from 'sweetalert';
 import './AddAdmin.scss';
 
 const AddAdmin = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
   const handelSubmit = (e) => {
     e.preventDefault();
     const admin = e.target.adminEmail.value;

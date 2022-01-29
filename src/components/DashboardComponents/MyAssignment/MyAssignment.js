@@ -11,6 +11,12 @@ const MyAssignment = () => {
   const { loggedInUser } = useAuth();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
+  useEffect(() => {
     dispatch(loadOrdersAsync(loggedInUser.email));
     dispatch(loadAssignmentAsync());
   }, [dispatch, loggedInUser.email]);

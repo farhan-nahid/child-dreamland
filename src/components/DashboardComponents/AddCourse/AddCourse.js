@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
@@ -11,6 +11,12 @@ const AddCourse = () => {
   const [data, setData] = useState({});
   const [image, setImage] = useState();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   const handelBlur = (e) => {
     const newData = { ...data };

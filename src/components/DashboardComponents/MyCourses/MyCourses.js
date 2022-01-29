@@ -13,6 +13,12 @@ const MyCourses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
+  useEffect(() => {
     dispatch(loadOrdersAsync(loggedInUser.email));
     dispatch(emptyOrder());
   }, [dispatch, loggedInUser]);

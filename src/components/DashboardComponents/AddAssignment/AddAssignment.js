@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
@@ -11,6 +11,12 @@ const AddAssignment = () => {
   const [isDisable, setIsDisable] = useState(false);
   const dispatch = useDispatch();
   const { loggedInUser } = useAuth();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   const handelBlur = (e) => {
     const newData = { ...data };

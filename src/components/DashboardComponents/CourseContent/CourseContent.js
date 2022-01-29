@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import './CourseContent.scss';
@@ -6,6 +6,12 @@ import './CourseContent.scss';
 const CourseContent = () => {
   const { name } = useParams();
   const { loggedInUser } = useAuth();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   return (
     <section id='course__content'>

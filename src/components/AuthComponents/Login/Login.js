@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -11,6 +11,12 @@ const Login = () => {
   const location = useLocation();
   const { emailSignIn, disableLoading } = useAuth();
   const [data, setData] = useState({});
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   const handelBlur = (e) => {
     const newData = { ...data };
