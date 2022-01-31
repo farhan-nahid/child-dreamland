@@ -11,15 +11,18 @@ const StripePayment = ({ data }) => {
   const elements = useElements();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { phNumber, fullName, email, position, name, price } = data;
+  const { phNumber, fullName, email, position, name, price, address } = data;
   const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
+    console.log(data);
     dispatch(createPaymentIntent(data));
     dispatch(emptyPrev());
   }, [dispatch, data]);
 
   const clientSecret = useSelector((state) => state.orders.clientSecret);
+  console.log(clientSecret);
+  console.log(processing);
 
   const ELEMENT_OPTIONS = {
     style: {
@@ -94,7 +97,14 @@ const StripePayment = ({ data }) => {
         <Col lg={6} md={6} sm={12} xs={12}>
           <Form.Group className='mb-3' controlId='address'>
             <Form.Label>Your Address</Form.Label>
-            <Form.Control type='text' required autoComplete='off' spellCheck='false' placeholder='Enter Your Address' />
+            <Form.Control
+              type='text'
+              required
+              autoComplete='off'
+              spellCheck='false'
+              placeholder='Enter Your Address'
+              defaultValue={address ? address : ''}
+            />
           </Form.Group>
         </Col>
 
@@ -120,7 +130,7 @@ const StripePayment = ({ data }) => {
         </Col>
 
         {clientSecret ? (
-          <Col lg={12} md={12} sm={12} xs={12} className='text-center mt-5 pt-5'>
+          <Col lg={12} md={12} sm={12} xs={12} className='text-center mt-5'>
             {!processing ? (
               <button className='main__button' disabled={!stripe}>
                 <span>Place Order</span>

@@ -12,10 +12,12 @@ import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
 import AddAssignment from './components/DashboardComponents/AddAssignment/AddAssignment';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
 import CourseContent from './components/DashboardComponents/CourseContent/CourseContent';
+import EditProfile from './components/DashboardComponents/EditProfile/EditProfile';
 import MyAssignment from './components/DashboardComponents/MyAssignment/MyAssignment';
 import MyCourses from './components/DashboardComponents/MyCourses/MyCourses';
 import Profile from './components/DashboardComponents/Profile/Profile';
 import ScrollToTop from './components/SharedComponents/ScrollToTop/ScrollToTop';
+import AdMisson from './pages/AdMisson';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import PlaceOrder from './pages/PlaceOrder';
@@ -30,6 +32,7 @@ const App = () => {
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<SignUp />} />
+        <Route path='/admission' element={<AdMisson />} />
         <Route
           path='/place-order/:id'
           element={
@@ -38,6 +41,7 @@ const App = () => {
             </RequiredAuth>
           }
         />
+
         <Route
           path='/dashboard'
           element={
@@ -51,6 +55,14 @@ const App = () => {
             element={
               <RequiredAuth>
                 <Profile />
+              </RequiredAuth>
+            }
+          />
+          <Route
+            path='/dashboard/edit-profile/:email'
+            element={
+              <RequiredAuth>
+                <EditProfile />
               </RequiredAuth>
             }
           />
@@ -79,7 +91,7 @@ const App = () => {
             }
           />
           <Route
-            path='/dashboard/my-assignments'
+            path='/dashboard/course-assignments'
             element={
               <RequiredStudent>
                 <MyAssignment />

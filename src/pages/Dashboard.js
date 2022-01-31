@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { AiOutlineFileAdd, AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineEdit, AiOutlineFileAdd, AiOutlinePlus } from 'react-icons/ai';
 import { BiHomeAlt, BiLogOut, BiTask, BiUserCheck } from 'react-icons/bi';
 import { MdOutlineManageAccounts } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,7 +46,7 @@ const Dashboard = () => {
               {user.normalUsersState.position === 'Student' && (
                 <>
                   <li>
-                    <NavLink to='/dashboard/my-assignments' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                    <NavLink to='/dashboard/course-assignments' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
                       <BiTask /> My Assignments
                     </NavLink>
                   </li>
@@ -84,6 +84,12 @@ const Dashboard = () => {
                   </li>
                 </>
               )}
+
+              <li>
+                <NavLink to={`/dashboard/edit-profile/${user.normalUsersState.email}`} className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                  <AiOutlineEdit /> Edit Profile
+                </NavLink>
+              </li>
 
               <li>
                 <NavLink to='/'>

@@ -21,17 +21,42 @@
       padding: 50px;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       border-radius: 10px;
+      .toast {
+        width: 300px;
+        .btn-close:focus {
+          box-shadow: none;
+        }
+        strong {
+          color: #0074b7;
+          font-weight: 400;
+        }
+      }
+
+      .register__toast {
+        position: fixed;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 9;
+        ul {
+          li {
+            color: #81878c;
+            font-size: 23px;
+            line-height: 35px;
+          }
+        }
+      }
       h3 {
         margin-bottom: 30px;
         font-size: 30px;
-        color: #00938d;
+        color: #0074b7;
         text-transform: uppercase;
       }
       p {
         text-align: center;
         margin-top: 20px;
         a {
-          color: #00938d;
+          color: #0074b7;
         }
       }
       .form-control {

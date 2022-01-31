@@ -1,0 +1,37 @@
+#edit__profile {
+  form {
+    padding: 0;
+    margin: 0;
+  }
+  #update__form {
+    margin: 50px auto;
+    padding: 20px 30px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    position: relative;
+    .form-control {
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    .form-check-input,
+    .form-control,
+    .form-select {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .form-control::placeholder {
+      font-size: 15px;
+      font-weight: 300;
+    }
+    .form-control::-webkit-outer-spin-button,
+    .form-control::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .form-control[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
+}

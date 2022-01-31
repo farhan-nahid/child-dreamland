@@ -28,7 +28,7 @@ export const loadOrdersAsync = createAsyncThunk('orders/loadOrdersAsync', async 
 });
 
 export const ordersSlice = createSlice({
-  name: 'orders',
+  name: 'admission',
   initialState,
   reducers: {
     emptyPrev: (state, action) => {

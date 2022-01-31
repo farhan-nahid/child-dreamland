@@ -1,0 +1,12 @@
+.place__order__header {
+  height: 300px;
+  width: 100%;
+  background: url('../../../images/place-order-bg.jpg') no-repeat center / cover;
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #ffffff;
+  }
+}

@@ -3,9 +3,12 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { BiPaperPlane } from 'react-icons/bi';
 import { FiFacebook, FiGithub, FiInstagram, FiTwitter } from 'react-icons/fi';
 import { GiGraduateCap } from 'react-icons/gi';
+import { useNavigate } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <section id='footer__top'>
@@ -18,7 +21,7 @@ const Footer = () => {
                   It is a long established fact that a reader will be distracted by the content of a page when looking
                   at its layout.
                 </p>
-                <button className='main__button'>
+                <button className='main__button' onClick={() => navigate('/admission')}>
                   <span>
                     <BiPaperPlane /> Apply now
                   </span>

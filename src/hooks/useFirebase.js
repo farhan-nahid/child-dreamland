@@ -35,6 +35,7 @@ const useFirebase = () => {
           displayName: user.fullName,
         });
         sendEmailVerification(auth.currentUser);
+        delete user.password;
         dispatch(postUsersAsync(user)).then((res) => {
           if (res.payload.insertedId) {
             toast.dismiss(loading);

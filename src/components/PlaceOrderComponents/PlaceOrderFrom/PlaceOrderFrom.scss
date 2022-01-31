@@ -1,17 +1,4 @@
 #place__order {
-  .place__order__header {
-    height: 300px;
-    width: 100%;
-    background: url('../../../images/place-order-bg.jpg') no-repeat center / cover;
-    h1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      color: #ffffff;
-    }
-  }
-
   .place__order__form {
     margin: 100px auto;
 
@@ -45,13 +32,4 @@
       border-radius: 10px;
     }
   }
-}
-
-.CardBrandIcon-container.is-hidden .CardBrandIcon.is-loaded img,
-.CardBrandIcon-container.is-hidden .CardBrandIcon.is-loaded svg {
-  opacity: 1 !important;
-}
-.CardBrandIcon-container.is-hidden .CardBrandIcon.is-loaded img,
-.CardBrandIcon-container.is-hidden .CardBrandIcon.is-loaded svg {
-  opacity: 1;
 }
