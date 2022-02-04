@@ -1,5 +1,5 @@
 #footer__top {
-  background-color: #0074b7;
+  background-color: #1c7e74;
   padding: 50px 0;
   .footer__card {
     h5 {
@@ -26,24 +26,21 @@
         outline: 0;
         border: 0;
         background-color: #ffffff;
-        color: #0074b7;
+        color: #1c7e74;
         width: 50px;
       }
     }
 
     button {
-      border: 2px solid #ffffff;
+      background-color: #ffffff;
       span {
-        color: #0074b7;
+        color: #212121;
       }
-      &::before,
-      &::after {
-        background-color: #ffffff;
-      }
+
       &:hover {
         &::before,
         &::after {
-          background-color: #0074b7;
+          background-color: #ffffff;
         }
       }
     }
@@ -77,10 +74,6 @@ footer {
   .footer__container {
     margin: 50px 0;
     .footer__item {
-      h6 {
-        text-align: left;
-      }
-
       ul {
         li {
           a {
@@ -89,10 +82,15 @@ footer {
             line-height: 40px;
             transition: all linear 0.3s;
             &:hover {
-              color: #0074b7;
+              color: #fed072;
             }
           }
         }
+      }
+      img {
+        margin-top: 20px;
+        width: 220px;
+        object-fit: cover;
       }
     }
     &::before {
@@ -129,8 +127,8 @@ footer {
           text-align: center;
           transition: all linear 0.3s;
           &:hover {
-            background: #0074b7;
-            border: 1px solid #0074b7;
+            background: #fed072;
+            border: 1px solid #fed072;
           }
         }
       }

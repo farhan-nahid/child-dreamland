@@ -1,0 +1,32 @@
+#all__services {
+  margin-top: 100px;
+  padding: 100px 0;
+  background: url('../../../images/service-bg.png') no-repeat center / cover;
+  .main__title {
+    margin-bottom: 50px;
+  }
+  .service__card {
+    display: flex;
+    padding: 20px;
+    .service__description {
+      margin-left: 25px;
+      h3 {
+        color: #888080;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #all__services {
+    margin-top: 50px;
+    .service__card {
+      text-align: center;
+      flex-direction: column;
+      h3 {
+        margin: 20px 0;
+      }
+    }
+  }
+}

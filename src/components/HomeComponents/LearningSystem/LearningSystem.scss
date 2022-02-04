@@ -1,0 +1,52 @@
+#learning__system {
+  margin-top: 100px;
+  padding: 50px 0;
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
+  height: 600px;
+  position: relative;
+  background: url('../../../images/learning-system-bg.jpg') no-repeat center / cover;
+  .learn__system__card {
+    border-radius: 5px;
+    width: 475px;
+    position: absolute;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fed072;
+    padding: 0 30px;
+    height: 375px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .main__button {
+      &::before,
+      &::after {
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #learning__system {
+    margin-top: 50px;
+    height: 600px;
+    .learn__system__card {
+      align-items: center;
+      width: 90%;
+      position: absolute;
+      right: 50%;
+      transform: translateY(-50%) translateX(50%);
+      .main__button {
+        text-align: center;
+      }
+    }
+  }
+}

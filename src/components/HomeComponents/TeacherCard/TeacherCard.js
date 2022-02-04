@@ -4,7 +4,7 @@ import { GoLocation } from 'react-icons/go';
 
 const TeacherCard = ({ teacher: { image, name, skill, location } }) => {
   return (
-    <Col lg={3} md={4} sm={6} xs={12} className='p-0'>
+    <Col lg={3} md={4} sm={12} xs={12} className='p-0'>
       <div className='teacher__card'>
         <div className='teacher__image'>
           <img src={image} alt={name} />

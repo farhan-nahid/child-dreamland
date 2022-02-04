@@ -4,6 +4,7 @@ import { BiPaperPlane } from 'react-icons/bi';
 import { FiFacebook, FiGithub, FiInstagram, FiTwitter } from 'react-icons/fi';
 import { GiGraduateCap } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
+import footerImg from '../../../images/footer-img.png';
 import './Footer.scss';
 
 const Footer = () => {
@@ -17,10 +18,7 @@ const Footer = () => {
             <Col lg={6} md={6} sm={12} xs={12}>
               <div className='footer__card'>
                 <h5>ADMISSIONS ARE OPEN</h5>
-                <p>
-                  It is a long established fact that a reader will be distracted by the content of a page when looking
-                  at its layout.
-                </p>
+                <p>It is a long established fact that a reader will be distracted by the content of a page when looking at its layout.</p>
                 <button className='main__button' onClick={() => navigate('/admission')}>
                   <span>
                     <BiPaperPlane /> Apply now
@@ -31,18 +29,9 @@ const Footer = () => {
             <Col lg={6} md={6} sm={12} xs={12}>
               <div className='footer__card'>
                 <h5>HAVE ANY QUERIES?</h5>
-                <p>
-                  It is a long established fact that a reader will be distracted by the readable content of a page when
-                  looking at its layout.
-                </p>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                 <form onSubmit={(e) => e.preventDefault()}>
-                  <input
-                    type='email'
-                    placeholder='e.g. pathshala@gmail.com'
-                    autoComplete='off'
-                    autoCapitalize='off'
-                    spellCheck='false'
-                  />
+                  <input type='email' placeholder='e.g. pathshala@gmail.com' autoComplete='off' autoCapitalize='off' spellCheck='false' />
                   <button type='submit'>
                     {' '}
                     <BiPaperPlane />{' '}
@@ -60,9 +49,9 @@ const Footer = () => {
           </h4>
           <h5>ePATHSHALA</h5>
           <h6>BETTER WAY TO LEARN & GROW</h6>
-          <Row className='footer__container'>
+          <Row className='footer__container text-center text-sm-start'>
             <Col lg={3} sm={6} xs={12} className='footer__item'>
-              <h6>CONTACT US</h6>
+              <h6 className='text-center text-sm-start'>CONTACT US</h6>
               <ul>
                 <li>
                   <a href='/' target='_blank' rel='noopener noreferrer'>
@@ -83,7 +72,7 @@ const Footer = () => {
             </Col>
 
             <Col lg={3} sm={6} xs={12} className='footer__item'>
-              <h6>QUICK LINKS</h6>
+              <h6 className='text-center text-sm-start'>QUICK LINKS</h6>
               <ul>
                 <li>
                   <a href='/' target='_blank' rel='noopener noreferrer'>
@@ -109,7 +98,7 @@ const Footer = () => {
             </Col>
 
             <Col lg={3} sm={6} xs={12} className='footer__item'>
-              <h6>SCHOOL TIMINGS</h6>
+              <h6 className='text-center text-sm-start'>SCHOOL TIMINGS</h6>
               <ul>
                 <li>
                   <a href='/' target='_blank' rel='noopener noreferrer'>
@@ -125,34 +114,8 @@ const Footer = () => {
             </Col>
 
             <Col lg={3} sm={6} xs={12} className='footer__item'>
-              <h6>Teachers</h6>
-              <ul>
-                <li>
-                  <a href='/' target='_blank' rel='noopener noreferrer'>
-                    Olivia Thomas
-                  </a>
-                </li>
-                <li>
-                  <a href='/' target='_blank' rel='noopener noreferrer'>
-                    Max Turner
-                  </a>
-                </li>
-                <li>
-                  <a href='/' target='_blank' rel='noopener noreferrer'>
-                    Jane Smith
-                  </a>
-                </li>
-                <li>
-                  <a href='/' target='_blank' rel='noopener noreferrer'>
-                    John Stevens
-                  </a>
-                </li>
-                <li>
-                  <a href='/' target='_blank' rel='noopener noreferrer'>
-                    Martha Stevens
-                  </a>
-                </li>
-              </ul>
+              <h6 className='text-center text-sm-start'>Flexible learning</h6>
+              <img src={footerImg} alt='footerImg' />
             </Col>
           </Row>
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AiOutlineStar } from 'react-icons/ai';
 import { BiPaperPlane, BiRocket } from 'react-icons/bi';
 import { BsTrophy } from 'react-icons/bs';
-import { GrLineChart } from 'react-icons/gr';
+import { GiChart } from 'react-icons/gi';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -29,7 +29,7 @@ export default class HeroSlider extends Component {
               <AiOutlineStar size='2rem' /> <span>WE ARE BEST</span> <AiOutlineStar size='2rem' />
             </h2>
             <h1>
-              LET YOUR CHILD <GrLineChart /> <strong>Grow</strong>
+              LET YOUR CHILD <GiChart /> <strong>Grow</strong>
             </h1>
             <p>
               We here at <strong>PATHSHALA</strong> provides best education to your little one

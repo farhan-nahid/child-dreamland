@@ -37,9 +37,9 @@
         opacity: 0.9;
       }
       &:hover {
-        border: 2px solid #0074b7;
+        border: 2px solid #fed072;
         &::before {
-          color: #0074b7;
+          color: #fed072;
         }
       }
     }
@@ -79,7 +79,7 @@
           text-align: center;
           strong {
             font-size: 60px;
-            color: #0074b7;
+            color: #fed072;
           }
         }
         p {
