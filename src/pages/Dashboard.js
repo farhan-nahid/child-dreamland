@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { AiOutlineEdit, AiOutlineFileAdd, AiOutlinePlus } from 'react-icons/ai';
-import { BiHomeAlt, BiLogOut, BiTask, BiUserCheck } from 'react-icons/bi';
+import { BiHomeAlt, BiLogOut, BiTask } from 'react-icons/bi';
+import { FiUserCheck } from 'react-icons/fi';
+import { HiOutlineUserGroup } from 'react-icons/hi';
 import { MdOutlineManageAccounts } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
@@ -33,7 +35,7 @@ const Dashboard = () => {
             <ul>
               <li>
                 <NavLink to='/dashboard/profile' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                  <BiUserCheck /> My Profile
+                  <FiUserCheck /> My Profile
                 </NavLink>
               </li>
 
@@ -47,7 +49,7 @@ const Dashboard = () => {
                 <>
                   <li>
                     <NavLink to='/dashboard/course-assignments' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                      <BiTask /> My Assignments
+                      <BiTask /> Course Assignments
                     </NavLink>
                   </li>
                 </>
@@ -58,6 +60,16 @@ const Dashboard = () => {
                   <li>
                     <NavLink to='/dashboard/add-assignment' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
                       <AiOutlinePlus /> Add Assignment
+                    </NavLink>
+                  </li>
+                </>
+              )}
+
+              {(user.normalUsersState.position === 'Teacher' || user.normalUsersState.position === 'Guardian') && (
+                <>
+                  <li>
+                    <NavLink to='/dashboard/all-students' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                      <HiOutlineUserGroup /> All Students
                     </NavLink>
                   </li>
                 </>

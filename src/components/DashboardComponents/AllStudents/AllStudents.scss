@@ -1,0 +1,31 @@
+#all__students {
+  .table > :not(:first-child) {
+    border-top: 2px solid transparent;
+  }
+
+  .students__table {
+    margin: 50px 0;
+    thead {
+      tr {
+        th {
+          padding: 15px 10px;
+          text-align: center;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 10px 5px;
+          text-align: center;
+          img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}

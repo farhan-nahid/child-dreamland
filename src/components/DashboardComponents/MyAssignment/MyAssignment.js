@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Table } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadAssignmentAsync } from '../../../feathers/assignmentsSlice';
 import { loadOrdersAsync } from '../../../feathers/ordersSlice';
@@ -25,7 +25,7 @@ const MyAssignment = () => {
   const orders = useSelector((state) => state.orders.ordersState).length;
 
   return (
-    <section id='my__assignments'>
+    <Container id='my__assignments'>
       <h2>My Assignments</h2>
       {!orders ? (
         <div className='placeholder__text'>
@@ -35,8 +35,8 @@ const MyAssignment = () => {
         <>
           {!loggedInUser?.emailVerified ? (
             <div className='unknown__student'>
-              Please Check your Email Account. When you create your account we send an verification email to your
-              account. Please confirm it to see your assignments. <br /> <br />
+              Please Check your Email Account. When you create your account we send an verification email to your account. Please confirm it to see
+              your assignments. <br /> <br />
               N:B: After Verify Your email please refresh the page
             </div>
           ) : (
@@ -71,7 +71,7 @@ const MyAssignment = () => {
           )}
         </>
       )}
-    </section>
+    </Container>
   );
 };
 

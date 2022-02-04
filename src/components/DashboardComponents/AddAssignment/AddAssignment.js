@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Container, Form, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import { postAssignmentAsync } from '../../../feathers/assignmentsSlice';
@@ -44,12 +44,12 @@ const AddAssignment = () => {
   };
 
   return (
-    <section id='add__assignment'>
+    <Container id='add__assignment'>
       <h2>Add Assignment</h2>
       {!loggedInUser?.emailVerified ? (
         <div className='unknown__teacher'>
-          Please Check your Email Account. When you create your account we send an verification email to your account.
-          Please confirm it to add assignments for students. <br /> <br />
+          Please Check your Email Account. When you create your account we send an verification email to your account. Please confirm it to add
+          assignments for students. <br /> <br />
           N:B: After Verify Your email please refresh the page
         </div>
       ) : (
@@ -92,7 +92,7 @@ const AddAssignment = () => {
           </Row>
         </Form>
       )}
-    </section>
+    </Container>
   );
 };
 

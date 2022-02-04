@@ -11,6 +11,7 @@ import SignUp from './components/AuthComponents/SignUp/SignUp';
 import AddAdmin from './components/DashboardComponents/AddAdmin/AddAdmin';
 import AddAssignment from './components/DashboardComponents/AddAssignment/AddAssignment';
 import AddCourse from './components/DashboardComponents/AddCourse/AddCourse';
+import AllStudents from './components/DashboardComponents/AllStudents/AllStudents';
 import CourseContent from './components/DashboardComponents/CourseContent/CourseContent';
 import EditProfile from './components/DashboardComponents/EditProfile/EditProfile';
 import MyAssignment from './components/DashboardComponents/MyAssignment/MyAssignment';
@@ -71,6 +72,14 @@ const App = () => {
             element={
               <RequiredAuth>
                 <MyCourses />
+              </RequiredAuth>
+            }
+          />
+          <Route
+            path='/dashboard/all-students'
+            element={
+              <RequiredAuth>
+                <AllStudents />
               </RequiredAuth>
             }
           />

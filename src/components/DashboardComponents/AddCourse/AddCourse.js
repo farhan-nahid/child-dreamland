@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Container, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
@@ -62,7 +62,7 @@ const AddCourse = () => {
   };
 
   return (
-    <section id='add__course'>
+    <Container id='add__course'>
       <h2>Add Course</h2>
       <Form className='add__course__container' onSubmit={handelSubmit}>
         <Row>
@@ -125,7 +125,7 @@ const AddCourse = () => {
           </Col>
         </Row>
       </Form>
-    </section>
+    </Container>
   );
 };
 

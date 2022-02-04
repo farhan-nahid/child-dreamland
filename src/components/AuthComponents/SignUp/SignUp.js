@@ -43,14 +43,20 @@ const SignUp = () => {
       .finally(() => toast.dismiss(loading));
   };
 
+  const randomNumber = () => {
+    const random = Math.random() * 100;
+    if (random >= 10 && random <= 100) {
+      return random.toFixed(2);
+    } else {
+      return randomNumber();
+    }
+  };
+
   const handelSubmit = (e) => {
     e.preventDefault();
-
     if (!image) {
-      return toast.error('Please Upload a Image..');
-    }
-
-    if (data.password !== data.confirmPassword) {
+      return toast.error('Please Upload Your Image..');
+    } else if (data.password !== data.confirmPassword) {
       return toast.error('Password not Matched..');
     } else if (data.password.length < 8) {
       toast.error('Your Password must have 8 characters...');
@@ -62,22 +68,19 @@ const SignUp = () => {
       toast.error('Password should be at least 1 Number');
     } else if (!/(?=.*?[#?!@$%^&*-])/.test(data.password)) {
       toast.error('Password should be at least 1 Spacial character');
-    } else if (!image) {
-      return toast.error('Please Upload Your Image..');
     } else {
       data.fullName = `${data.fName.trim()} ${data.lName.trim()}`;
       data.userImage = image;
       data.position = isStudent;
       data.gender = gender;
-      delete data.fName;
-      delete data.lName;
-      delete data.confirmPassword;
       if (isStudent === 'Student') {
         if (!className) {
           return toast.error('Please Select a Class...');
         }
         data.className = className;
         data.religion = religion;
+        data.attendance = randomNumber();
+        data.avgMark = randomNumber();
         emailSignup(data, navigate);
       } else {
         emailSignup(data, navigate);

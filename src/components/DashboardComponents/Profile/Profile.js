@@ -26,8 +26,23 @@ const Profile = () => {
   }, [dispatch, loggedInUser]);
 
   const user = useSelector((state) => state.users);
-  const { email, fullName, position, userImage, gender, religion, className, birthDate, description, address, motherName, fatherName, phNumber } =
-    user.normalUsersState;
+  const {
+    email,
+    fullName,
+    position,
+    userImage,
+    gender,
+    religion,
+    className,
+    birthDate,
+    description,
+    address,
+    motherName,
+    fatherName,
+    phNumber,
+    avgMark,
+    attendance,
+  } = user.normalUsersState;
 
   return (
     <section id='my__profile' className='container'>
@@ -64,7 +79,6 @@ const Profile = () => {
                 <td>Email Address:</td>
                 <td>{email}</td>
               </tr>
-
               {fatherName && (
                 <tr>
                   <td>Father's Name:</td>
@@ -101,6 +115,18 @@ const Profile = () => {
                 <tr>
                   <td>Religion:</td>
                   <td>{religion}</td>
+                </tr>
+              )}
+              {attendance && (
+                <tr>
+                  <td>Attendance:</td>
+                  <td>{attendance}%</td>
+                </tr>
+              )}
+              {avgMark && (
+                <tr>
+                  <td>Average Marks (out of 100):</td>
+                  <td>{avgMark}</td>
                 </tr>
               )}
               <tr>
