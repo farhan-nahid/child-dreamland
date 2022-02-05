@@ -11,7 +11,7 @@ const Navigation = () => {
     <Navbar expand='lg' id='navigation'>
       <Container>
         <Navbar.Brand as={NavLink} to='/'>
-          ePATHSHALA
+          Child Dreamland
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>

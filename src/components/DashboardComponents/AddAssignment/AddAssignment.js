@@ -27,6 +27,12 @@ const AddAssignment = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
     setIsDisable(true);
+    if (data.assignmentName.length > 70) {
+      data.assignmentName = `${data.assignmentName.slice(0, 70)} ...`;
+    }
+    if (!data.assignmentMark) {
+      data.assignmentMark = 5;
+    }
     data.teacherName = loggedInUser.displayName;
     data.teacherImage = loggedInUser.photoURL;
     dispatch(postAssignmentAsync(data)).then((res) => {
@@ -57,10 +63,10 @@ const AddAssignment = () => {
           <Row>
             <Col lg={6} md={6} sm={12} xs={12}>
               <Form.Group className='mb-3' controlId='assignmentName'>
-                <Form.Label>Assignment Name</Form.Label>
+                <Form.Label>Assignment Topic</Form.Label>
                 <Form.Control
                   type='text'
-                  placeholder='Enter assignment Name'
+                  placeholder='Enter assignment Topic in 70 letters'
                   autoComplete='off'
                   spellCheck='false'
                   name='assignmentName'
@@ -73,15 +79,14 @@ const AddAssignment = () => {
             <Col lg={6} md={6} sm={12} xs={12}>
               <Form.Group className='mb-3' controlId='assignmentMark'>
                 <Form.Label>Assignment Mark</Form.Label>
-                <Form.Control
-                  type='number'
-                  placeholder='Enter assignment mark'
-                  autoComplete='off'
-                  spellCheck='false'
-                  name='assignmentMark'
-                  required
-                  onBlur={handelBlur}
-                />
+                <Form.Select size='sm' name='assignmentMark' required onBlur={handelBlur}>
+                  <option>5</option>
+                  <option>10</option>
+                  <option>15</option>
+                  <option>20</option>
+                  <option>25</option>
+                  <option>30</option>
+                </Form.Select>
               </Form.Group>
             </Col>
             <Col lg={12} md={12} sm={12} xs={12} className='text-center mt-5'>

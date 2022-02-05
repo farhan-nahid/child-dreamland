@@ -100,7 +100,7 @@ const App = () => {
             }
           />
           <Route
-            path='/dashboard/course-assignments'
+            path='/dashboard/class-assignments'
             element={
               <RequiredStudent>
                 <MyAssignment />

@@ -15,14 +15,11 @@ const StripePayment = ({ data }) => {
   const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
-    console.log(data);
     dispatch(createPaymentIntent(data));
     dispatch(emptyPrev());
   }, [dispatch, data]);
 
   const clientSecret = useSelector((state) => state.orders.clientSecret);
-  console.log(clientSecret);
-  console.log(processing);
 
   const ELEMENT_OPTIONS = {
     style: {

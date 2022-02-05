@@ -8,17 +8,17 @@ const initialState = {
 };
 
 export const postAssignmentAsync = createAsyncThunk('assignments/postAssignmentAsync', async (payload) => {
-  const response = await axios.post(`https://e--pathshala.herokuapp.com/add-assignment`, payload);
+  const response = await axios.post(`https://child-dreamland.herokuapp.com/add-assignment`, payload);
   return response.data;
 });
 
 export const loadAssignmentAsync = createAsyncThunk('assignments/loadAssignmentAsync', async () => {
-  const response = await axios.get(`https://e--pathshala.herokuapp.com/all-assignments`);
+  const response = await axios.get(`https://child-dreamland.herokuapp.com/all-assignments`);
   return response.data;
 });
 
 export const deleteAssignmentAsync = createAsyncThunk('assignments/deleteAssignmentAsync', async (payload) => {
-  // const response = await axios.get(`https://e--pathshala.herokuapp.com/?id=${payload}`);
+  // const response = await axios.get(`https://child-dreamland.herokuapp.com/?id=${payload}`);
   // return response.data;
 });
 

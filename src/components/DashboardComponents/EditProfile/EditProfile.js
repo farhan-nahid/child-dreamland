@@ -39,7 +39,7 @@ const EditProfile = () => {
     }
 
     axios
-      .put(`https://e--pathshala.herokuapp.com/edit-profile?email=${loggedInUser.email}`, data)
+      .put(`https://child-dreamland.herokuapp.com/edit-profile?email=${loggedInUser.email}`, data)
       .then((res) => {
         if (res.status === 200) {
           toast.success('Updating Successfully');

@@ -98,7 +98,7 @@ const useFirebase = () => {
       if (user) {
         setLoggedInUser(user);
         getIdToken(user).then((idToken) => {
-          localStorage.setItem('ePATHSHALA_token', idToken);
+          localStorage.setItem('child_dreamland_token', idToken);
         });
       }
       setIsLoading(false);

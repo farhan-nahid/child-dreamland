@@ -15,9 +15,9 @@ const AddAdmin = () => {
     } else {
       const user = { email: admin };
       axios
-        .put('https://e--pathshala.herokuapp.com/user/admin', user, {
+        .put('https://child-dreamland.herokuapp.com/user/admin', user, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('ePATHSHALA_token')}`,
+            Authorization: `Bearer ${localStorage.getItem('child_dreamland_token')}`,
           },
         })
         .then((res) => {

@@ -10,28 +10,28 @@ const initialState = {
 };
 
 export const postUsersAsync = createAsyncThunk('users/postUsersAsync', async (payload) => {
-  const response = await axios.post(`https://e--pathshala.herokuapp.com/user`, payload);
+  const response = await axios.post(`https://child-dreamland.herokuapp.com/user`, payload);
   return response.data;
 });
 
 export const loadUsersAsync = createAsyncThunk('users/loadUsersAsync', async (payload) => {
-  const response = await axios.get(`https://e--pathshala.herokuapp.com/all-users?position=${payload}`);
+  const response = await axios.get(`https://child-dreamland.herokuapp.com/all-users?position=${payload}`);
   return response.data;
 });
 
 export const loadSingleUsersAsync = createAsyncThunk('users/loadSingleUsersAsync', async (payload) => {
-  const response = await axios.get(`https://e--pathshala.herokuapp.com/users?email=${payload}`, {
+  const response = await axios.get(`https://child-dreamland.herokuapp.com/users?email=${payload}`, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('ePATHSHALA_token')}`,
+      Authorization: `Bearer ${localStorage.getItem('child_dreamland_token')}`,
     },
   });
   return response.data;
 });
 
 export const checkAdminUsersAsync = createAsyncThunk('users/checkAdminUsersAsync', async (payload) => {
-  const response = await axios.get(`https://e--pathshala.herokuapp.com/user?email=${payload}`, {
+  const response = await axios.get(`https://child-dreamland.herokuapp.com/user?email=${payload}`, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('ePATHSHALA_token')}`,
+      Authorization: `Bearer ${localStorage.getItem('child_dreamland_token')}`,
     },
   });
   return response.data;
@@ -68,7 +68,6 @@ export const usersSlice = createSlice({
 
     builder.addCase(loadUsersAsync.fulfilled, (state, { payload }) => {
       state.status.loadAllUser = 'Success';
-      console.log(payload);
       state.allUsers = payload;
     });
 

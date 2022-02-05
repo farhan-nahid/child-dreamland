@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (loggedInUser) {
-      dispatch(loadSingleUsersAsync(loggedInUser?.email));
+      dispatch(loadSingleUsersAsync(loggedInUser.email));
       dispatch(checkAdminUsersAsync(loggedInUser.email));
     }
   }, [dispatch, loggedInUser]);
@@ -48,8 +48,8 @@ const Dashboard = () => {
               {user.normalUsersState.position === 'Student' && (
                 <>
                   <li>
-                    <NavLink to='/dashboard/course-assignments' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
-                      <BiTask /> Course Assignments
+                    <NavLink to='/dashboard/class-assignments' className={(navInfo) => (navInfo.isActive ? 'active' : '')}>
+                      <BiTask /> Class Assignments
                     </NavLink>
                   </li>
                 </>

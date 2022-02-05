@@ -9,19 +9,19 @@ const initialState = {
 };
 
 export const postOrdersAsync = createAsyncThunk('orders/postOrdersAsync', async (payload) => {
-  const response = await axios.post(`https://e--pathshala.herokuapp.com/add-order`, payload);
+  const response = await axios.post(`https://child-dreamland.herokuapp.com/add-order`, payload);
   return response.data;
 });
 
 export const createPaymentIntent = createAsyncThunk('orders/createPaymentIntent', async (payload) => {
-  const response = await axios.post('https://e--pathshala.herokuapp.com/create-payment-intent', payload);
+  const response = await axios.post('https://child-dreamland.herokuapp.com/create-payment-intent', payload);
   return response.data;
 });
 
 export const loadOrdersAsync = createAsyncThunk('orders/loadOrdersAsync', async (payload) => {
-  const response = await axios.get(`https://e--pathshala.herokuapp.com/orders?email=${payload}`, {
+  const response = await axios.get(`https://child-dreamland.herokuapp.com/orders?email=${payload}`, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('ePATHSHALA_token')}`,
+      Authorization: `Bearer ${localStorage.getItem('child_dreamland_token')}`,
     },
   });
   return response.data;

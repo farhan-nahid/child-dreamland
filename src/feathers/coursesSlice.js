@@ -9,17 +9,17 @@ const initialState = {
 };
 
 export const postCoursesAsync = createAsyncThunk('courses/postCoursesAsync', async (payload) => {
-  const response = await axios.post(`https://e--pathshala.herokuapp.com/add-course`, payload);
+  const response = await axios.post(`https://child-dreamland.herokuapp.com/add-course`, payload);
   return response.data;
 });
 
 export const loadCoursesAsync = createAsyncThunk('courses/loadCoursesAsync', async () => {
-  const response = await axios.get('https://e--pathshala.herokuapp.com/all-courses');
+  const response = await axios.get('https://child-dreamland.herokuapp.com/all-courses');
   return response.data;
 });
 
 export const loadSingleCoursesAsync = createAsyncThunk('courses/loadSingleCoursesAsync', async (payload) => {
-  const response = await axios.get(`https://e--pathshala.herokuapp.com/course/${payload}`);
+  const response = await axios.get(`https://child-dreamland.herokuapp.com/course/${payload}`);
   return response.data;
 });
 

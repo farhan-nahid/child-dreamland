@@ -47,7 +47,7 @@ const Footer = () => {
           <h4>
             <GiGraduateCap />
           </h4>
-          <h5>ePATHSHALA</h5>
+          <h5>Child Dreamland</h5>
           <h6>BETTER WAY TO LEARN & GROW</h6>
           <Row className='footer__container text-center text-sm-start'>
             <Col lg={3} sm={6} xs={12} className='footer__item'>
